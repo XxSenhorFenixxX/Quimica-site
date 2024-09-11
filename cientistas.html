@@ -154,6 +154,44 @@
             background-color: #6cb2e0;
             color: rgba(255, 255, 255, 0.562);
         }
+
+        /* Estilos do Modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do modal */
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body class="light-mode">
@@ -172,7 +210,7 @@
 </header>
 
 <div class="scientists">
-    <h2>Cientistas</h2>
+    <center><h2>Cientistas</h2></center>
     <div class="search-and-filter">
         <input type="text" id="search-box" class="search-box" placeholder="Buscar cientistas...">
         <div class="filter-buttons">
@@ -211,55 +249,49 @@
 
 <script>
     const scientists = [
-        { name: 'Ada Lovelace', letter: 'A', img: 'Fotos/ada_lovelace.jpg' },
-        { name: 'Albert Einstein', letter: 'A', img: 'Fotos/albert_einstein.jpg' },
-        { name: 'Barbara McClintock', letter: 'B', img: 'Fotos/barbara_mcclintock.jpg' },
-        { name: 'Blaise Pascal', letter: 'B', img: 'Fotos/blaise_pascal.jpg' },
-        { name: 'Carl Sagan', letter: 'C', img: 'Fotos/carl_sagan.jpg' },
-        { name: 'Charles Darwin', letter: 'C', img: 'Fotos/charles_darwin.jpg' },
-        { name: 'David Attenborough', letter: 'D', img: 'Fotos/david_attenborough.jpg' },
-        { name: 'Dmitri Mendeleev', letter: 'D', img: 'Fotos/dmitri_mendeleev.jpg' },
-        { name: 'Eileen Collins', letter: 'E', img: 'Fotos/eileen_collins.jpg' },
-        { name: 'Enrico Fermi', letter: 'E', img: 'Fotos/enrico_fermi.jpg' },
-        { name: 'Fermat Pierre de', letter: 'F', img: 'Fotos/fermat_pierre_de.jpg' },
-        { name: 'Francis Crick', letter: 'F', img: 'Fotos/francis_crick.jpg' },
-        { name: 'Galileo Galilei', letter: 'G', img: 'Fotos/galileo_galilei.jpg' },
-        { name: 'Gerty Cori', letter: 'G', img: 'Fotos/gerty_cori.jpg' },
-        { name: 'Hannah Arendt', letter: 'H', img: 'Fotos/hannah_arendt.jpg' },
-        { name: 'Hans Albrecht', letter: 'H', img: 'Fotos/hans_albrecht.jpg' },
-        { name: 'Isaac Newton', letter: 'I', img: 'Fotos/isaac_newton.jpg' },
-        { name: 'Irène Joliot-Curie', letter: 'I', img: 'Fotos/irene_joliot_curie.jpg' },
-        { name: 'James Clerk Maxwell', letter: 'J', img: 'Fotos/james_clerk_maxwell.jpg' },
-        { name: 'Jane Goodall', letter: 'J', img: 'Fotos/jane_goodall.jpg' },
-        { name: 'Kurt Gödel', letter: 'K', img: 'Fotos/kurt_godel.jpg' },
-        { name: 'Katherine Johnson', letter: 'K', img: 'Fotos/katherine_johnson.jpg' },
-        { name: 'Leonhard Euler', letter: 'L', img: 'Fotos/leonhard_euler.jpg' },
-        { name: 'Lise Meitner', letter: 'L', img: 'Fotos/lise_meitner.jpg' },
-        { name: 'Marie Curie', letter: 'M', img: 'Fotos/marie_curie.jpg' },
-        { name: 'Michael Faraday', letter: 'M', img: 'Fotos/michael_faraday.jpg' },
-        { name: 'Niels Bohr', letter: 'N', img: 'Fotos/niels_bohr.jpg' },
-        { name: 'Nina Simone', letter: 'N', img: 'Fotos/nina_simone.jpg' },
-        { name: 'Oscar Wilde', letter: 'O', img: 'Fotos/oscar_wilde.jpg' },
-        { name: 'Olga Ladyzhenskaya', letter: 'O', img: 'Fotos/olga_ladyzhenskaya.jpg' },
-        { name: 'Pablo Picasso', letter: 'P', img: 'Fotos/pablo_picasso.jpg' },
-        { name: 'Rosalind Franklin', letter: 'R', img: 'Fotos/rosalind_franklin.jpg' },
-        { name: 'Richard Feynman', letter: 'R', img: 'Fotos/richard_feynman.jpg' },
-        { name: 'Stephen Hawking', letter: 'S', img: 'Fotos/stephen_hawking.jpg' },
-        { name: 'Srinivasa Rama', letter: 'S', img: 'Fotos/srinivasa_ramanujan.jpg' },
-        { name: 'Turing Alan', letter: 'T', img: 'Fotos/turing_alan.jpg' },
-        { name: 'Thomas Edison', letter: 'T', img: 'Fotos/thomas_edison.jpg' },
-        { name: 'Ursula Franklin', letter: 'U', img: 'Fotos/ursula_franklin.jpg' },
-        { name: 'Upton Sinclair', letter: 'U', img: 'Fotos/upton_sinclair.jpg' },
-        { name: 'Vera Rubin', letter: 'V', img: 'Fotos/vera_rubin.jpg' },
-        { name: 'Vladimir Lenin', letter: 'V', img: 'Fotos/vladimir_lenin.jpg' },
-        { name: 'Walt Disney', letter: 'W', img: 'Fotos/walt_disney.jpg' },
-        { name: 'Willem de kooning', letter: 'W', img: 'Fotos/willem_de_kooning.jpg' },
-        { name: 'Xander Bogaerts', letter: 'X', img: 'Fotos/xander_bogaerts.jpg' },
-        { name: 'Yoko ono', letter: 'Y', img: 'Fotos/yoko_ono.jpg' },
-        { name: 'Yuri Gagarin', letter: 'Y', img: 'Fotos/yuri_gagarin.jpg' },
-        { name: 'Zaha Hadid', letter: 'Z', img: 'Fotos/zaha_hadid.jpg' },
-        { name: 'Zora Neale', letter: 'Z', img: 'Fotos/zora_neale_hurston.jpg' }
-    ];
+    { name: 'Ada Lovelace', letter: 'A', img: 'Fotos/ada_lovelace.jpg' },
+    { name: 'Albert Einstein', letter: 'A', img: 'Fotos/albert_einstein.jpg' },
+    { name: 'Barbara McClintock', letter: 'B', img: 'Fotos/barbara_mcclintock.jpg' },
+    { name: 'Blaise Pascal', letter: 'B', img: 'Fotos/blaise_pascal.jpg' },
+    { name: 'Carl Sagan', letter: 'C', img: 'Fotos/carl_sagan.jpg' },
+    { name: 'Charles Darwin', letter: 'C', img: 'Fotos/charles_darwin.jpg' },
+    { name: 'David Attenborough', letter: 'D', img: 'Fotos/david_attenborough.jpg' },
+    { name: 'Dmitri Mendeleev', letter: 'D', img: 'Fotos/dmitri_mendeleev.jpg' },
+    { name: 'Eileen Collins', letter: 'E', img: 'Fotos/eileen_collins.jpg' },
+    { name: 'Enrico Fermi', letter: 'E', img: 'Fotos/enrico_fermi.jpg' },
+    { name: 'Fermat Pierre de', letter: 'F', img: 'Fotos/fermat_pierre_de.jpg' },
+    { name: 'Francis Crick', letter: 'F', img: 'Fotos/francis_crick.jpg' },
+    { name: 'Galileo Galilei', letter: 'G', img: 'Fotos/galileo_galilei.jpg' },
+    { name: 'Gerty Cori', letter: 'G', img: 'Fotos/gerty_cori.jpg' },
+    { name: 'Isaac Newton', letter: 'I', img: 'Fotos/isaac_newton.jpg' },
+    { name: 'Irène Joliot-Curie', letter: 'I', img: 'Fotos/irene_joliot_curie.jpg' },
+    { name: 'James Clerk Maxwell', letter: 'J', img: 'Fotos/james_clerk_maxwell.jpg' },
+    { name: 'Jane Goodall', letter: 'J', img: 'Fotos/jane_goodall.jpg' },
+    { name: 'Kurt Gödel', letter: 'K', img: 'Fotos/kurt_godel.jpg' },
+    { name: 'Katherine Johnson', letter: 'K', img: 'Fotos/katherine_johnson.jpg' },
+    { name: 'Leonhard Euler', letter: 'L', img: 'Fotos/leonhard_euler.jpg' },
+    { name: 'Lise Meitner', letter: 'L', img: 'Fotos/lise_meitner.jpg' },
+    { name: 'Marie Curie', letter: 'M', img: 'Fotos/marie_curie.jpg' },
+    { name: 'Michael Faraday', letter: 'M', img: 'Fotos/michael_faraday.jpg' },
+    { name: 'Niels Bohr', letter: 'N', img: 'Fotos/niels_bohr.jpg' },
+    { name: 'Norbert Wiener', letter: 'N', img: 'Fotos/norbert_wiener.jpg' },
+    { name: 'Otto Hahn', letter: 'O', img: 'Fotos/otto_hahn.jpg' },
+    { name: 'Olga Ladyzhenskaya', letter: 'O', img: 'Fotos/olga_ladyzhenskaya.jpg' },
+    { name: 'Paul Dirac', letter: 'P', img: 'Fotos/paul_dirac.jpg' },
+    { name: 'Pierre Curie', letter: 'P', img: 'Fotos/pierre_curie.jpg' },
+    { name: 'Rosalind Franklin', letter: 'R', img: 'Fotos/rosalind_franklin.jpg' },
+    { name: 'Richard Feynman', letter: 'R', img: 'Fotos/richard_feynman.jpg' },
+    { name: 'Stephen Hawking', letter: 'S', img: 'Fotos/stephen_hawking.jpg' },
+    { name: 'Srinivasa Ramanujan', letter: 'S', img: 'Fotos/srinivasa_ramanujan.jpg' },
+    { name: 'Alan Turing', letter: 'T', img: 'Fotos/turing_alan.jpg' },
+    { name: 'Thomas Edison', letter: 'T', img: 'Fotos/thomas_edison.jpg' },
+    { name: 'Ursula Franklin', letter: 'U', img: 'Fotos/ursula_franklin.jpg' },
+    { name: 'Upton Sinclair', letter: 'U', img: 'Fotos/upton_sinclair.jpg' },
+    { name: 'Vera Rubin', letter: 'V', img: 'Fotos/vera_rubin.jpg' },
+    { name: 'William Ramsay', letter: 'W', img: 'Fotos/william_ramsay.jpg' },
+    { name: 'Xavier Le Verrier', letter: 'X', img: 'Fotos/xavier_le_verrier.jpg' },
+    { name: 'Zacharias Janssen', letter: 'Z', img: 'Fotos/zacharias_janssen.jpg' }
+];
 
     const scientistListElement = document.getElementById('scientist-list');
     const searchBox = document.getElementById('search-box');
@@ -319,6 +351,8 @@
 
     // Renderizar todos os cientistas ao carregar a página
     renderScientists(scientists);
+
+    
 </script>
 
 </body>

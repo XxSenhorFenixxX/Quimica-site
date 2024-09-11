@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
         }
+
         header {
             background-color: #6cb2e0;
             color: rgba(255, 255, 255, 0.562);
@@ -18,33 +20,41 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: background-color 0.3s;
         }
+
         .logo {
             font-size: 24px;
             font-weight: bold;
             display: flex;
             align-items: center;
         }
+
         .logo a {
             color: inherit;
             text-decoration: none;
         }
+
         .logo i {
             font-size: 30px;
             margin-right: 10px;
         }
+
         nav a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             font-size: 18px;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
         .search-container {
             margin-left: 20px;
         }
+
         .search-box {
             width: 200px;
             padding: 8px;
@@ -53,40 +63,51 @@
             outline: none;
             font-size: 16px;
         }
+
         .mode-icon {
             cursor: pointer;
             font-size: 24px;
             background: none;
             border: none;
             color: white;
+            transition: color 0.3s;
         }
+
         .light-mode {
             background-color: white;
             color: black;
         }
+
         .light-mode header {
             background-color: #333;
             color: white;
         }
+
         .dark-mode {
             background-color: #333;
             color: white;
         }
+
         .dark-mode header {
             background-color: #6cb2e0;
             color: rgba(255, 255, 255, 0.562);
         }
+
         .image-container {
             position: relative;
             text-align: center;
             color: white;
             margin: 20px auto;
             max-width: 800px;
+            animation: fadeIn 2s ease-in-out;
         }
+
         .image-container img {
             width: 100%;
             height: auto;
+            animation: slideIn 1s ease-out;
         }
+
         .image-container .text {
             position: absolute;
             top: 10%;
@@ -100,6 +121,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             width: 80%;
         }
+
         .description {
             position: absolute;
             top: 30%;
@@ -112,14 +134,17 @@
             line-height: 1.6;
             width: 80%;
         }
+
         .pioneers {
             text-align: center;
             margin: 40px auto;
         }
+
         .pioneers h2 {
             font-size: 28px;
             margin-bottom: 20px;
         }
+
         .pioneers .pioneers-box {
             display: flex;
             justify-content: center;
@@ -129,118 +154,262 @@
             border: 2px solid #333;
             border-radius: 10px;
             background-color: #f4f4f4;
+            animation: fadeIn 2s ease-in-out;
         }
+
         .pioneers .pioneer {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 150px;
+            transition: transform 0.3s;
         }
+
         .pioneers .pioneer img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #333;
+            animation: fadeIn 1.5s ease-in-out;
         }
+
         .pioneers .pioneer p {
             margin: 10px 0 0;
             font-size: 16px;
         }
-        
+
         /* Estilo para o modo claro */
         .light-mode .pioneers-box {
             background-color: #f4f4f4;
             color: black;
-            border: 2px solid #333; /* Borda preta no modo claro */
+            border: 2px solid #333;
         }
 
         .light-mode .pioneers .pioneer p {
             color: black;
         }
 
+        .light-mode .text-container {
+            background-color: #e0e0e0; /* Cinza claro para o modo claro */
+            color: black;
+        }
+
         /* Estilo para o modo escuro */
         .dark-mode .pioneers-box {
-            background-color: #444; /* Cor de fundo para o modo escuro */
-            color: white; /* Cor do texto */
-            border: 2px solid #fff; /* Borda branca no modo escuro */
+            background-color: #444;
+            color: white;
+            border: 2px solid #fff;
         }
 
         .dark-mode .pioneers .pioneer p {
             color: white;
         }
+
+        .dark-mode .text-container {
+            background-color: #555; /* Cinza escuro para o modo escuro */
+            color: white;
+        }
+
+        .text-container {
+            position: relative;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, color 0.3s;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .more-text {
+            display: none;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .more-text.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .continue-button,
+        .collapse-button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #444;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .continue-button:hover,
+        .collapse-button:hover {
+            background-color: #ddd;
+        }
+
+        .light-mode .continue-button,
+        .light-mode .collapse-button {
+            color: #444;
+            background-color: #ffffff;
+        }
+
+        .dark-mode .continue-button,
+        .dark-mode .collapse-button {
+            color: #ffffff;
+            background-color: #666; /* Cinza escuro para o botão no modo escuro */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
+
 <body class="light-mode">
 
-<header>
-    <div class="logo">
-        <a href="#home"><i class="fas fa-flask"></i> Elementos Químicos</a>
-    </div>
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="#about">Sobre o dicionário</a>
-        <a href="cientistas.html">Cientistas</a> <!-- Link para o novo site de cientistas -->
-        <a href="tabela.html">Tabela Periodica</a>
-    </nav>        
-    <button class="mode-icon" onclick="toggleMode()">🌙</button>
-</header>
+    <header>
+        <div class="logo">
+            <a href="#home"><i class="fas fa-flask"></i> Elementos Químicos</a>
+        </div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="#about">Sobre o dicionário</a>
+            <a href="cientistas.html">Cientistas</a>
+            <a href="tabela.html">Tabela Periodica</a>
+        </nav>
+        <button class="mode-icon" onclick="toggleMode()">🌙</button>
+    </header>
 
-<div class="image-container">
-    <img src="Fotos/download.jfif" alt="genial">
-    <div class="text">A Foto Mais Genial do Mundo: A Dupla Hélice de DNA</div>
-    <div class="description">
-        A icônica foto da dupla hélice de DNA, obtida por Rosalind Franklin e Maurice Wilkins em 1952, é um marco na química e biologia. Esta imagem revelou a estrutura em espiral do DNA, essencial para entender a replicação genética e a transmissão de informações hereditárias. A descoberta impulsionou avanços em biotecnologia e medicina, transformando nosso conhecimento sobre a vida e abrindo caminho para inovações na engenharia genética e tratamentos personalizados.
-    </div>
-</div>
+    <div class="text-container">
+        <Center>
+            <h2>
+                <div>A Foto Mais Genial do Mundo: Uma Conferência Solvay</div>
+            </h2>
+        </Center>
+        <center><img src="Fotos/dowload.jpg" alt="genial"></center>
+        <div>
+            <center>
+                <h4>
+                    De 1927, que é frequentemente considerada uma das fotos mais geniais do mundo devido à incrível
+                    reunião de mentes brilhantes que ela retrata. <br>Essa foto icônica foi tirada durante a quinta
+                    Conferência Solvay, realizada em Bruxelas, e capturou alguns dos cientistas mais influentes da
+                    história, todos juntos em um só lugar.
+                </h4>
+                <button class="continue-button" onclick="showMoreText()">Continuar</button>
+                <div class="more-text">
+                    <center>
+                        <h4>Na imagem, estão presentes 29 dos mais proeminentes físicos e químicos da época, incluindo
+                            Albert Einstein, Marie Curie, Niels Bohr, Erwin Schrödinger, Werner Heisenberg, Max Planck,
+                            entre outros. A maioria dos participantes já havia ganhado ou viria a ganhar o Prêmio Nobel,
+                            destacando o impacto que essas figuras tiveram na ciência moderna. A foto representa um
+                            momento único na história, onde as maiores mentes se reuniram para discutir os avanços e
+                            desafios da mecânica quântica, marcando uma era de inovação científica que mudaria o mundo
+                            para sempre.
 
-<div class="pioneers">
-    <h2>Pioneiros</h2>
-    <div class="pioneers-box">
-        <div class="pioneer">
-            <img src="Fotos/Rosalind.jfif" alt="Rosalind Franklin">
-            <p>Rosalind Franklin</p>
+                            A disposição dos cientistas, o ambiente formal da época e a expressão contemplativa de cada
+                            um capturam o espírito de uma era em que a ciência estava no centro das transformações da
+                            humanidade. É uma foto que simboliza não apenas o intelecto, mas também a colaboração, a
+                            curiosidade e o impacto duradouro da ciência.</h4>
+                        <button class="collapse-button" onclick="hideMoreText()">Recolher</button>
+                    </center>
+                </div>
+            </center>
         </div>
-        <div class="pioneer">
-            <img src="Fotos/Maurice.jfif" alt="Maurice Wilkins">
-            <p>Maurice Wilkins</p>
-        </div>
-        <div class="pioneer">
-            <img src="Fotos/Peterdebye.jfif" alt="Peter Debye">
-            <p>Peter Debye</p>
-        </div>
-        <div class="pioneer">
-            <img src="Fotos/langmuir_irving_a1.jpg" alt="Irving Langmuir">
-            <p>Irving Langmuir</p>
-        </div>
-        <div class="pioneer">
-            <img src="Fotos/martin.jfif" alt="Martin Knudsen">
-            <p>Martin Knudsen</p>
-        </div>
-        <div class="pioneer">
-            <img src="Fotos/Swi.jfif" alt="Auguste Piccard">
-            <p>Auguste Piccard</p>
-        </div>
-        <!-- Adicione mais pioneiros aqui -->
     </div>
-</div>
 
-<script>
-    function toggleMode() {
-        const body = document.body;
-        const button = document.querySelector('.mode-icon');
-        
-        if (body.classList.contains('light-mode')) {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            button.textContent = '☀️';
-        } else {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            button.textContent = '🌙';
+    <div class="pioneers">
+        <h2>Pioneiros</h2>
+        <div class="pioneers-box">
+            <div class="pioneer">
+                <img src="Fotos/Rosalind.jfif" alt="Rosalind Franklin">
+                <p>Rosalind Franklin</p>
+            </div>
+            <div class="pioneer">
+                <img src="Fotos/Maurice.jfif" alt="Maurice Wilkins">
+                <p>Maurice Wilkins</p>
+            </div>
+            <div class="pioneer">
+                <img src="Fotos/Peterdebye.jfif" alt="Peter Debye">
+                <p>Peter Debye</p>
+            </div>
+            <div class="pioneer">
+                <img src="Fotos/langmuir_irving_a1.jpg" alt="Irving Langmuir">
+                <p>Irving Langmuir</p>
+            </div>
+            <div class="pioneer">
+                <img src="Fotos/martin.jfif" alt="Martin Knudsen">
+                <p>Martin Knudsen</p>
+            </div>
+            <div class="pioneer">
+                <img src="Fotos/Swi.jfif" alt="Auguste Piccard">
+                <p>Auguste Piccard</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const button = document.querySelector('.mode-icon');
+            const textContainer = document.querySelector('.text-container');
+            const buttons = document.querySelectorAll('.continue-button, .collapse-button');
+
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                button.textContent = '☀️';
+                textContainer.classList.add('dark-mode');
+                buttons.forEach(btn => btn.style.color = 'white');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                button.textContent = '🌙';
+                textContainer.classList.remove('dark-mode');
+                buttons.forEach(btn => btn.style.color = '#444');
+            }
         }
-    }
-</script>
+
+        function showMoreText() {
+            const moreText = document.querySelector('.more-text');
+            const button = document.querySelector('.continue-button');
+            moreText.style.display = 'block';
+            button.style.display = 'none';
+        }
+
+        function hideMoreText() {
+            const moreText = document.querySelector('.more-text');
+            const button = document.querySelector('.continue-button');
+            moreText.style.display = 'none';
+            button.style.display = 'block';
+        }
+    </script>
 
 </body>
+
 </html>
