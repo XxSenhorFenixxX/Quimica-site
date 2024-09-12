@@ -125,94 +125,120 @@
         }
 
         .container {
-    display: flex;              /* Ativa o Flexbox para organizar os itens lado a lado */
-    justify-content: space-between; /* Espaçamento entre a tabela e a legenda */
-    align-items: flex-start;    /* Alinha ao topo dos elementos */
-    padding: 20px;              /* Adiciona algum espaçamento ao redor */
-}
+            display: flex;
+            /* Ativa o Flexbox para organizar os itens lado a lado */
+            justify-content: space-between;
+            /* Espaçamento entre a tabela e a legenda */
+            align-items: flex-start;
+            /* Alinha ao topo dos elementos */
+            padding: 20px;
+            /* Adiciona algum espaçamento ao redor */
+        }
 
-.tabela {
-    display: grid;              /* Usa o grid para organizar os elementos da tabela periódica */
-    grid-template-columns: repeat(18, 1fr); /* Exemplo de 18 colunas, ajuste conforme necessário */
-    grid-gap: 10px;             /* Espaçamento entre os elementos da tabela */
-    width: 75%;                 /* A tabela ocupa 75% da largura */
-}
+        .tabela {
+            display: grid;
+            /* Usa o grid para organizar os elementos da tabela periódica */
+            grid-template-columns: repeat(18, 1fr);
+            /* Exemplo de 18 colunas, ajuste conforme necessário */
+            grid-gap: 10px;
+            /* Espaçamento entre os elementos da tabela */
+            width: 75%;
+            /* A tabela ocupa 75% da largura */
+        }
 
-.legenda {
-    width: 20%;                 /* A legenda ocupa 20% da largura */
-    margin-left: 20px;          /* Espaçamento entre a tabela e a legenda */
-}
+        .legenda {
+            width: 20%;
+            /* A legenda ocupa 20% da largura */
+            margin-left: 20px;
+            /* Espaçamento entre a tabela e a legenda */
+        }
 
-.legenda ul {
-    list-style: none;           /* Remove as bolinhas padrão das listas */
-    padding: 0;
-}
+        .legenda ul {
+            list-style: none;
+            /* Remove as bolinhas padrão das listas */
+            padding: 0;
+        }
 
-.legenda li {
-    margin-bottom: 10px;        /* Espaçamento entre os itens da legenda */
-}
+        .legenda li {
+            margin-bottom: 10px;
+            /* Espaçamento entre os itens da legenda */
+        }
 
-.legenda li span {
-    display: inline-block;
-    width: 20px;                /* Tamanho do quadrado colorido da legenda */
-    height: 20px;
-    margin-right: 10px;         /* Espaçamento entre o quadrado e o texto */
-    background-color: grey;     /* Exemplo de cor, modifique conforme necessário */
-    border-radius: 5px;         /* Faz o quadrado virar um círculo */
-}
+        .legenda li span {
+            display: inline-block;
+            width: 20px;
+            /* Tamanho do quadrado colorido da legenda */
+            height: 20px;
+            margin-right: 10px;
+            /* Espaçamento entre o quadrado e o texto */
+            background-color: grey;
+            /* Exemplo de cor, modifique conforme necessário */
+            border-radius: 5px;
+            /* Faz o quadrado virar um círculo */
+        }
 
 
-.metais-alcalinos {
-    background-color: red;      /* Cor para Metais Alcalinos */
-}
+        .metais-alcalinos {
+            background-color: red;
+            /* Cor para Metais Alcalinos */
+        }
 
-.metais-alcalino-terrosos {
-    background-color: orange;   /* Cor para Metais Alcalino-Terrosos */
-}
+        .metais-alcalino-terrosos {
+            background-color: orange;
+            /* Cor para Metais Alcalino-Terrosos */
+        }
 
-.metaloides {
-    background-color: green;    /* Cor para Metaloides */
-}
+        .metaloides {
+            background-color: green;
+            /* Cor para Metaloides */
+        }
 
-.nao-metais {
-    background-color: blue;     /* Cor para Não Metais */
-}
+        .nao-metais {
+            background-color: blue;
+            /* Cor para Não Metais */
+        }
 
-.elemento {
-    text-align: center;         /* Centraliza o texto dos elementos */
-    border: 1px solid #ccc;     /* Adiciona uma borda aos elementos */
-    padding: 10px;
-    font-size: 14px;
-}
+        .elemento {
+            text-align: center;
+            /* Centraliza o texto dos elementos */
+            border: 1px solid #ccc;
+            /* Adiciona uma borda aos elementos */
+            padding: 10px;
+            font-size: 14px;
+        }
 
-#show-all {
-    margin-top: 10px; /* Espaço acima do botão */
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        #show-all {
+            margin-top: 10px;
+            /* Espaço acima do botão */
+            padding: 8px 16px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-#show-all:hover {
-    background-color: #0056b3;
-}
+        #show-all:hover {
+            background-color: #0056b3;
+        }
 
-.tabela {
-    width: 75%;                 /* Define 75% da largura para a tabela */
-}
+        .tabela {
+            width: 75%;
+            /* Define 75% da largura para a tabela */
+        }
 
-.legenda {
-    width: 20%;                 /* Define 20% da largura para a legenda */
-    margin-left: 20px;          /* Adiciona espaço entre a tabela e a legenda */
-}
-   
-.ignore-me {
-    display: none;
-}
+        .legenda {
+            width: 20%;
+            /* Define 20% da largura para a legenda */
+            margin-left: 20px;
+            /* Adiciona espaço entre a tabela e a legenda */
+        }
+
+        .ignore-me {
+            display: none;
+        }
 
 
         .metal-alkaline-legend {
@@ -402,9 +428,9 @@
                     <div class="atomic-weight">4.0026</div>
                 </div>
             </div>
-    
-    
-    
+
+
+
             <!-- Linha 2 -->
             <div class="element metal-alkaline"><span class="large">Li</span>
                 <div class="element-info">
@@ -472,7 +498,7 @@
                     <div class="atomic-weight">20.18</div>
                 </div>
             </div>
-    
+
             <!-- Linha 3 -->
             <div class="element metal-alkaline"><span class="large">Na</span>
                 <div class="element-info">
@@ -540,7 +566,7 @@
                     <div class="atomic-weight">39.95</div>
                 </div>
             </div>
-    
+
             <!-- Linha 4 -->
             <div class="element metal-alkaline"><span class="large">K</span>
                 <div class="element-info">
@@ -668,7 +694,7 @@
                     <div class="atomic-weight">83.798</div>
                 </div>
             </div>
-    
+
             <!-- Linha 5 -->
             <div class="element metal-alkaline"><span class="large">Rb</span>
                 <div class="element-info">
@@ -796,7 +822,7 @@
                     <div class="atomic-weight">131.293</div>
                 </div>
             </div>
-    
+
             <!-- Linha 6 -->
             <div class="element metal-alkaline"><span class="large">Cs</span>
                 <div class="element-info">
@@ -1056,9 +1082,9 @@
             <div></div>
             <div></div>
             <div></div>
-            <div></div>  
             <div></div>
-            <div></div>   
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -1239,7 +1265,7 @@
             </div>
             <div></div>
             <div></div>
-            <div></div>           
+            <div></div>
             <div class="element actinides"><span class="large">Ac</span>
                 <div class="element-info">
                     <div class="atomic-number">89</div>
@@ -1345,55 +1371,55 @@
                     <div class="atomic-weight">262</div>
                 </div>
             </div>
-    </div>
-    <div class="legenda">
-        <div class="layout-container">
-            <div class="legend-container">
-                <div class="legend">
-                    <ul>
-                        <li data-filter="metal-alkaline">
-                            <span class="color" style="background-color: #ff6f61;"></span>Metais Alcalinos
-                        </li>
-                        <li data-filter="metal-alkaline-earth">
-                            <span class="color" style="background-color: #ffb27a;"></span>Metais Alcalinos Terrosos
-                        </li>
-                        <li data-filter="metalloids">
-                            <span class="color" style="background-color: #b0e57c;"></span>Metaloides
-                        </li>
-                        <li data-filter="nonmetals">
-                            <span class="color" style="background-color: #76d7ea;"></span>Não Metais
-                        </li>
-                        <li data-filter="halogens">
-                            <span class="color" style="background-color: #ff6fae;"></span>Halogênios
-                        </li>
-                        <li data-filter="noble-gases">
-                            <span class="color" style="background-color: #d4a1ff;"></span>Gases Nobres
-                        </li>
-                        <li data-filter="lanthanides">
-                            <span class="color" style="background-color: #b39ddb;"></span>Lantanídeos
-                        </li>
-                        <li data-filter="actinides">
-                            <span class="color" style="background-color: #ffcc80;"></span>Actinídeos
-                        </li>
-                        <li data-filter="transition-metals">
-                            <span class="color" style="background-color: #90a4ae;"></span>Metais de Transição
-                        </li>
-                    </ul>
+        </div>
+        <div class="legenda">
+            <div class="layout-container">
+                <div class="legend-container">
+                    <div class="legend">
+                        <ul>
+                            <li data-filter="metal-alkaline">
+                                <span class="color" style="background-color: #ff6f61;"></span>Metais Alcalinos
+                            </li>
+                            <li data-filter="metal-alkaline-earth">
+                                <span class="color" style="background-color: #ffb27a;"></span>Metais Alcalinos Terrosos
+                            </li>
+                            <li data-filter="metalloids">
+                                <span class="color" style="background-color: #b0e57c;"></span>Metaloides
+                            </li>
+                            <li data-filter="nonmetals">
+                                <span class="color" style="background-color: #76d7ea;"></span>Não Metais
+                            </li>
+                            <li data-filter="halogens">
+                                <span class="color" style="background-color: #ff6fae;"></span>Halogênios
+                            </li>
+                            <li data-filter="noble-gases">
+                                <span class="color" style="background-color: #d4a1ff;"></span>Gases Nobres
+                            </li>
+                            <li data-filter="lanthanides">
+                                <span class="color" style="background-color: #b39ddb;"></span>Lantanídeos
+                            </li>
+                            <li data-filter="actinides">
+                                <span class="color" style="background-color: #ffcc80;"></span>Actinídeos
+                            </li>
+                            <li data-filter="transition-metals">
+                                <span class="color" style="background-color: #90a4ae;"></span>Metais de Transição
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="show-all">Mostrar Todos</button>
                 </div>
-                <button id="show-all">Mostrar Todos</button>
-            </div>
-            <div class="tabela">
-                <!-- Coloque aqui a tabela periódica existente -->
+                <div class="tabela">
+                    <!-- Coloque aqui a tabela periódica existente -->
+                </div>
             </div>
         </div>
-    </div>
-    
 
 
-  
-        
-        
-        
+
+
+
+
+
 
 
 
@@ -1415,61 +1441,61 @@
                 }
             }
 
-// Função para remover acentos e pontuações
-function normalizeString(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s]|_/g, "").toLowerCase();
-}
+            // Função para remover acentos e pontuações
+            function normalizeString(str) {
+                return str.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s]|_/g, "").toLowerCase();
+            }
 
-document.getElementById('search-box').addEventListener('keyup', function () {
-    const query = normalizeString(this.value);
-    const elements = document.querySelectorAll('.element:not(.ignore-me)'); // Ignora divs com a classe ignore-me
+            document.getElementById('search-box').addEventListener('keyup', function () {
+                const query = normalizeString(this.value);
+                const elements = document.querySelectorAll('.element:not(.ignore-me)'); // Ignora divs com a classe ignore-me
 
-    elements.forEach(element => {
-        const elementName = normalizeString(element.querySelector('.element-name').textContent);
-        const symbol = normalizeString(element.querySelector('.large').textContent);
+                elements.forEach(element => {
+                    const elementName = normalizeString(element.querySelector('.element-name').textContent);
+                    const symbol = normalizeString(element.querySelector('.large').textContent);
 
-        if ((elementName || symbol) && (elementName.includes(query) || symbol.includes(query))) {
-            element.style.display = 'flex';
-        } else {
-            element.style.display = 'none';
-        }
-    });
-});
+                    if ((elementName || symbol) && (elementName.includes(query) || symbol.includes(query))) {
+                        element.style.display = 'flex';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                });
+            });
 
 
 
 
             // Função para filtrar elementos
             document.querySelectorAll('.legend li').forEach(item => {
-    item.addEventListener('click', function () {
-        const filterClass = this.getAttribute('data-filter');
-        const elements = document.querySelectorAll(`.element:not(.ignore-me)`); // Ignora divs com a classe ignore-me
+                item.addEventListener('click', function () {
+                    const filterClass = this.getAttribute('data-filter');
+                    const elements = document.querySelectorAll(`.element:not(.ignore-me)`); // Ignora divs com a classe ignore-me
 
-        elements.forEach(element => {
-            const elementName = normalizeString(element.querySelector('.element-name').textContent);
-            const symbol = normalizeString(element.querySelector('.large').textContent);
+                    elements.forEach(element => {
+                        const elementName = normalizeString(element.querySelector('.element-name').textContent);
+                        const symbol = normalizeString(element.querySelector('.large').textContent);
 
-            if (element.classList.contains(filterClass) && (elementName || symbol)) {
-                element.style.display = 'flex';
-            } else {
-                element.style.display = 'none';
-            }
-        });
-    });
-});
-
-
+                        if (element.classList.contains(filterClass) && (elementName || symbol)) {
+                            element.style.display = 'flex';
+                        } else {
+                            element.style.display = 'none';
+                        }
+                    });
+                });
+            });
 
 
 
 
-// Exibe todos os elementos quando o botão "Mostrar Todos" é clicado
-document.getElementById('show-all').addEventListener('click', function () {
-    const elements = document.querySelectorAll('.element');
-    elements.forEach(element => {
-        element.style.display = 'flex'; // Exibe todos os elementos
-    });
-});
+
+
+            // Exibe todos os elementos quando o botão "Mostrar Todos" é clicado
+            document.getElementById('show-all').addEventListener('click', function () {
+                const elements = document.querySelectorAll('.element');
+                elements.forEach(element => {
+                    element.style.display = 'flex'; // Exibe todos os elementos
+                });
+            });
 
         </script>
 </body>
