@@ -1343,22 +1343,27 @@
                 }
             }
 
-            // Função de busca
-            document.getElementById('search-box').addEventListener('keyup', function () {
-                const query = this.value.toLowerCase();
-                const elements = document.querySelectorAll('.element');
+// Função para remover acentos e pontuações
+function normalizeString(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s]|_/g, "").toLowerCase();
+}
 
-                elements.forEach(element => {
-                    const elementName = element.querySelector('.element-name').textContent.toLowerCase();
-                    const symbol = element.querySelector('.large').textContent.toLowerCase();
+document.getElementById('search-box').addEventListener('keyup', function () {
+    const query = normalizeString(this.value);
+    const elements = document.querySelectorAll('.element');
 
-                    if (elementName.includes(query) || symbol.includes(query)) {
-                        element.style.display = 'flex';
-                    } else {
-                        element.style.display = 'none';
-                    }
-                });
-            });
+    elements.forEach(element => {
+        const elementName = normalizeString(element.querySelector('.element-name').textContent);
+        const symbol = normalizeString(element.querySelector('.large').textContent);
+
+        if (elementName.includes(query) || symbol.includes(query)) {
+            element.style.display = 'flex';
+        } else {
+            element.style.display = 'none';
+        }
+    });
+});
+
 
             // Função para filtrar elementos
 document.querySelectorAll('.legend li').forEach(item => {
