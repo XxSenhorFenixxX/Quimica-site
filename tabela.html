@@ -210,9 +210,9 @@
     margin-left: 20px;          /* Adiciona espaço entre a tabela e a legenda */
 }
    
-
-
-
+.ignore-me {
+    display: none;
+}
 
 
         .metal-alkaline-legend {
@@ -354,7 +354,7 @@
 <body class="light-mode">
     <header>
         <div class="logo">
-            <a href="index.html"><i class="fas fa-flask"></i> Tabela Periódica</a>
+            <a href="index.html"><i class="fas fa-flask"></i>Voltar para Elementos Químicos</a>
         </div>
         <nav>
             <a href="index.html">Início</a>
@@ -1056,6 +1056,78 @@
             <div></div>
             <div></div>
             <div></div>
+            <div></div>  
+            <div></div>
+            <div></div>   
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -1167,7 +1239,7 @@
             </div>
             <div></div>
             <div></div>
-            <div></div>
+            <div></div>           
             <div class="element actinides"><span class="large">Ac</span>
                 <div class="element-info">
                     <div class="atomic-number">89</div>
@@ -1350,13 +1422,13 @@ function normalizeString(str) {
 
 document.getElementById('search-box').addEventListener('keyup', function () {
     const query = normalizeString(this.value);
-    const elements = document.querySelectorAll('.element');
+    const elements = document.querySelectorAll('.element:not(.ignore-me)'); // Ignora divs com a classe ignore-me
 
     elements.forEach(element => {
         const elementName = normalizeString(element.querySelector('.element-name').textContent);
         const symbol = normalizeString(element.querySelector('.large').textContent);
 
-        if (elementName.includes(query) || symbol.includes(query)) {
+        if ((elementName || symbol) && (elementName.includes(query) || symbol.includes(query))) {
             element.style.display = 'flex';
         } else {
             element.style.display = 'none';
@@ -1365,15 +1437,19 @@ document.getElementById('search-box').addEventListener('keyup', function () {
 });
 
 
+
+
             // Função para filtrar elementos
-document.querySelectorAll('.legend li').forEach(item => {
+            document.querySelectorAll('.legend li').forEach(item => {
     item.addEventListener('click', function () {
         const filterClass = this.getAttribute('data-filter');
-        const elements = document.querySelectorAll('.element');
+        const elements = document.querySelectorAll(`.element:not(.ignore-me)`); // Ignora divs com a classe ignore-me
 
         elements.forEach(element => {
-            // Exibe apenas os elementos que correspondem à classe do filtro
-            if (element.classList.contains(filterClass)) {
+            const elementName = normalizeString(element.querySelector('.element-name').textContent);
+            const symbol = normalizeString(element.querySelector('.large').textContent);
+
+            if (element.classList.contains(filterClass) && (elementName || symbol)) {
                 element.style.display = 'flex';
             } else {
                 element.style.display = 'none';
@@ -1381,6 +1457,9 @@ document.querySelectorAll('.legend li').forEach(item => {
         });
     });
 });
+
+
+
 
 
 
