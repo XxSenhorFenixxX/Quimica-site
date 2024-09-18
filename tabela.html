@@ -125,7 +125,7 @@
         }
 
         .blanco {
-            background-color: #ffffff00;
+            background-color: #fff;
         }
 
         .container {
@@ -234,10 +234,78 @@
         }
 
         .legenda {
-            width: 20%;
-            /* Define 20% da largura para a legenda */
-            margin-left: 20px;
-            /* Adiciona espaço entre a tabela e a legenda */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            user-select: none; 
+        }
+
+        /* Animação de expansão e tremor para a legenda */
+
+        .legend li:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+
+        /* Animação de tremor suave e expansão para os elementos ao passar o mouse na legenda */
+        .element.highlight {
+            transition: transform 0.3s ease;
+            transform: scale(1.1);
+            /* Expansão do elemento */
+            animation: smoothShake 0.6s ease infinite;
+            /* Tremor suave e infinito */
+        }
+
+        /* Animação de tremor suave para todas as direções */
+        @keyframes smoothShake {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1.1);
+            }
+
+            /* Certifica-se de que a escala de 1.2 seja mantida */
+            10% {
+                transform: translate(-2px, -2px) scale(1.1);
+            }
+
+            20% {
+                transform: translate(3px, 1px) scale(1.1);
+            }
+
+            30% {
+                transform: translate(-1px, 3px) scale(1.1);
+            }
+
+            40% {
+                transform: translate(1px, -1px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-3px, 2px) scale(1.1);
+            }
+
+            60% {
+                transform: translate(2px, -3px) scale(1.1);
+            }
+
+            70% {
+                transform: translate(-1px, 1px) scale(1.1);
+            }
+
+            80% {
+                transform: translate(1px, -2px) scale(1.1);
+            }
+
+            90% {
+                transform: translate(-2px, 3px) scale(1.1);
+            }
+        }
+
+        /* Mantém o estilo original dos elementos sem interferir nas outras animações */
+        .element {
+            none;
         }
 
         .nada {
@@ -294,6 +362,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: background-color 0.3s;
         }
 
         .logo {
@@ -312,7 +381,6 @@
             font-size: 30px;
             margin-right: 10px;
         }
-
 
         nav a {
             color: white;
@@ -344,6 +412,7 @@
             background: none;
             border: none;
             color: white;
+            transition: color 0.3s;
         }
 
         .light-mode {
@@ -380,20 +449,26 @@
         }
 
         .element.blanco {
-    background-color: rgba(255, 255, 255, 0); /* Totalmente transparente */
-    opacity: 0.0; /* Deixa o conteúdo meio transparente (0% de opacidade) */
-}
+            background-color: rgba(255, 255, 255, 0);
+            /* Totalmente transparente */
+            opacity: 0.0;
+            /* Deixa o conteúdo meio transparente (0% de opacidade) */
+        }
+
+        .invisivel {
+            opacity: 0.0;
+        }
     </style>
 </head>
 
 <body class="light-mode">
     <header>
         <div class="logo">
-            <a href="index.html"><i class="fas fa-flask"></i>Voltar para Elementos Químicos</a>
+            <a href="index.html"><i class="fas fa-flask"></i> Voltar para Elementos Químicos</a>
         </div>
         <nav>
             <a href="index.html">Início</a>
-            <a href="#about">Sobre</a>
+            <a href="#about">Experimentos</a>
             <a href="cientistas.html">Cientistas</a>
             <a href="tabela.html">Tabela Periódica</a>
         </nav>
@@ -414,22 +489,54 @@
                     <div class="atomic-weight">1.008</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element noble-gases"><span class="large">He</span>
                 <div class="element-info">
                     <div class="atomic-number">2</div>
@@ -455,16 +562,36 @@
                     <div class="atomic-weight">9.0122</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element metalloids"><span class="large">B</span>
                 <div class="element-info">
                     <div class="atomic-number">5</div>
@@ -523,16 +650,36 @@
                     <div class="atomic-weight">24.305</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element metalloids"><span class="large">Al</span>
                 <div class="element-info">
                     <div class="atomic-number">13</div>
@@ -847,7 +994,9 @@
                     <div class="atomic-weight">137.327</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element transition-metals"><span class="large">Hf</span>
                 <div class="element-info">
                     <div class="atomic-number">72</div>
@@ -968,7 +1117,9 @@
                     <div class="atomic-weight">226</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element actinides"><span class="large">Rf</span>
                 <div class="element-info">
                     <div class="atomic-number">104</div>
@@ -1074,27 +1225,69 @@
                     <div class="atomic-weight">294</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
 
             <div class="element lanthanides"><span class="large">La</span>
                 <div class="element-info">
@@ -1201,9 +1394,15 @@
                     <div class="atomic-weight">174.9668</div>
                 </div>
             </div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
-            <div class="element blanco"><span class="large"></span><div class="element-name">ㅤ</div></div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
+            <div class="element blanco"><span class="large"></span>
+                <div class="element-name">ㅤ</div>
+            </div>
             <div class="element actinides"><span class="large">Ac</span>
                 <div class="element-info">
                     <div class="atomic-number">89</div>
@@ -1310,6 +1509,7 @@
                 </div>
             </div>
         </div>
+        <div class="invisivel">Isso é so para um esp</div>
         <div class="legenda">
             <div class="layout-container">
                 <div class="legend-container">
@@ -1336,21 +1536,17 @@
                             <li data-filter="lanthanides">
                                 <span class="color" style="background-color: #b39ddb;"></span>Lantanídeos
                             </li>
-                            <li data-filter="actinides">
+                            <li data-filter="actinides" class="lege">
                                 <span class="color" style="background-color: #ffcc80;"></span>Actinídeos
                             </li>
                             <li data-filter="transition-metals">
                                 <span class="color" style="background-color: #90a4ae;"></span>Metais de Transição
-                            </li>
-                            <li data-filter="blanco">
-                                <span class="color" style="background-color: #fff;"></span>
                             </li>
                         </ul>
                     </div>
                     <button id="show-all">Mostrar Todos</button>
                 </div>
                 <div class="tabela">
-                    <!-- Coloque aqui a tabela periódica existente -->
                 </div>
             </div>
         </div>
@@ -1382,68 +1578,94 @@
                 }
             }
 
- // Função para remover acentos e pontuações
-function normalizeString(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s]|_/g, "").toLowerCase();
-}
+            // Função para remover acentos e pontuações
+            function normalizeString(str) {
+                return str.normalize("NFD").replace(/[\u0300-\u036f]/g, '').replace(/[^\w\s]|_/g, "").toLowerCase();
+            }
 
-// Função para exibir todos os elementos ou filtrar por classe da legenda
-function filterElementsByClass(filterClass) {
-    const elements = document.querySelectorAll('.element');
+            // Função para exibir todos os elementos ou filtrar por classe da legenda
+            function filterElementsByClass(filterClass) {
+                const elements = document.querySelectorAll('.element');
 
-    elements.forEach(element => {
-        const hasClass = element.classList.contains(filterClass);
-        const isEmpty = element.classList.contains('nada') && element.classList.contains('blanco');
+                elements.forEach(element => {
+                    const hasClass = element.classList.contains(filterClass);
+                    const isEmpty = element.classList.contains('nada') && element.classList.contains('blanco');
 
-        if (filterClass === "all") {
-            element.style.display = 'flex';  // Mostra todos os elementos
-        } else if (filterClass === "blanco" && isEmpty) {
-            element.style.display = 'flex';  // Mostra divs vazias se for "blanco"
-        } else if (hasClass) {
-            element.style.display = 'flex';  // Mostra elementos com a classe correta
-        } else {
-            element.style.display = 'none';  // Oculta os elementos que não correspondem
-        }
-    });
-}
+                    if (filterClass === "all") {
+                        element.style.display = 'flex';  // Mostra todos os elementos
+                    } else if (filterClass === "blanco" && isEmpty) {
+                        element.style.display = 'flex';  // Mostra divs vazias se for "blanco"
+                    } else if (hasClass) {
+                        element.style.display = 'flex';  // Mostra elementos com a classe correta
+                    } else {
+                        element.style.display = 'none';  // Oculta os elementos que não correspondem
+                    }
+                });
+            }
 
 
-// Adiciona evento de clique nos itens da legenda para filtrar elementos
-document.querySelectorAll('.legend li').forEach(item => {
-    item.addEventListener('click', function () {
-        const filterClass = this.getAttribute('data-filter');
-        filterElementsByClass(filterClass);  // Chama a função de filtragem pela classe
-    });
-});
+            // Adiciona evento de clique nos itens da legenda para filtrar elementos
+            document.querySelectorAll('.legend li').forEach(item => {
+                item.addEventListener('click', function () {
+                    const filterClass = this.getAttribute('data-filter');
+                    filterElementsByClass(filterClass);  // Chama a função de filtragem pela classe
+                });
+            });
 
-// Exibe todos os elementos quando o botão "Mostrar Todos" é clicado
-document.getElementById('show-all').addEventListener('click', function () {
-    filterElementsByClass("all");  // Mostra todos os elementos
-});
+            // Exibe todos os elementos quando o botão "Mostrar Todos" é clicado
+            document.getElementById('show-all').addEventListener('click', function () {
+                filterElementsByClass("all");  // Mostra todos os elementos
+            });
 
-// Função de pesquisa
-document.getElementById('search-box').addEventListener('keyup', function () {
-    const query = normalizeString(this.value);
-    const elements = document.querySelectorAll('.element:not(.ignore-me)'); // Seleciona apenas os elementos não ignorados
+            // Função de pesquisa
+            document.getElementById('search-box').addEventListener('keyup', function () {
+                const query = normalizeString(this.value);
+                const elements = document.querySelectorAll('.element:not(.ignore-me)'); // Seleciona apenas os elementos não ignorados
 
-    elements.forEach(element => {
-        const elementName = normalizeString(element.querySelector('.element-name').textContent);
-        const symbol = normalizeString(element.querySelector('.large').textContent);
+                elements.forEach(element => {
+                    const elementName = normalizeString(element.querySelector('.element-name').textContent);
+                    const symbol = normalizeString(element.querySelector('.large').textContent);
 
-        // Mostra o elemento se o nome ou símbolo corresponder à pesquisa
-        if ((elementName || symbol) && (elementName.includes(query) || symbol.includes(query))) {
-            element.style.display = 'flex';
-        } else {
-            element.style.display = 'none';
-        }
-    });
+                    // Mostra o elemento se o nome ou símbolo corresponder à pesquisa
+                    if ((elementName || symbol) && (elementName.includes(query) || symbol.includes(query))) {
+                        element.style.display = 'flex';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                });
 
-    // Oculta as divs vazias ao realizar a pesquisa
-    const emptyDivs = document.querySelectorAll('.empty');
-    emptyDivs.forEach(empty => {
-        empty.style.display = query.length > 0 ? 'none' : 'block'; // Mostra ou esconde dependendo da pesquisa
-    });
-});
+                // Oculta as divs vazias ao realizar a pesquisa
+                const emptyDivs = document.querySelectorAll('.empty');
+                emptyDivs.forEach(empty => {
+                    empty.style.display = query.length > 0 ? 'none' : 'block'; // Mostra ou esconde dependendo da pesquisa
+                });
+            });
+
+            // Destacar elementos ao passar o mouse na legenda
+            document.querySelectorAll('.legend li').forEach(item => {
+                item.addEventListener('mouseover', function () {
+                    const filterClass = this.getAttribute('data-filter');
+
+                    // Seleciona os elementos da tabela periódica correspondentes à classe química
+                    document.querySelectorAll(`.element.${filterClass}`).forEach(element => {
+                        element.classList.add('highlight'); // Adiciona a animação de tremor e expansão
+                    });
+                });
+
+                item.addEventListener('mouseout', function () {
+                    const filterClass = this.getAttribute('data-filter');
+
+                    // Remove a animação de tremor e expansão quando o mouse sai da legenda
+                    document.querySelectorAll(`.element.${filterClass}`).forEach(element => {
+                        element.classList.remove('highlight'); // Remove a classe 'highlight'
+                    });
+                });
+            });
+
+
+
+
+
 
         </script>
 </body>
