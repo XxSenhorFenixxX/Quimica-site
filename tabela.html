@@ -459,8 +459,76 @@
         .invisivel {
             opacity: 0.0;
         }
+
+         /* Estilo do modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Sombra */
+}
+
+.modal-content {
+  background-color: var(--background-modal);
+  color: var(--text-color-modal);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--border-color-modal);
+  width: 50%;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.close {
+  color: var(--close-button-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--close-hover-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Variáveis para Modo Claro */
+body.light-mode {
+  --background-modal: #ffffff;
+  --text-color-modal: #000000;
+  --border-color-modal: #cccccc;
+  --close-button-color: #aaa;
+  --close-hover-color: #000;
+}
+
+/* Variáveis para Modo Escuro */
+body.dark-mode {
+  --background-modal: #333333;
+  --text-color-modal: #ffffff;
+  --border-color-modal: #555555;
+  --close-button-color: #fff;
+  --close-hover-color: #ff5555;
+}
+
     </style>
 </head>
+
+<div id="elementModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="element-name"></h2>
+      <p>Número Atômico: <span id="atomic-number"></span></p>
+      <p>Peso Atômico: <span id="atomic-weight"></span></p>
+      <p id="element-description"></p> <!-- Área para descrição -->
+    </div>
+  </div>
 
 <body class="light-mode">
     <header>
@@ -469,7 +537,7 @@
         </div>
         <nav>
             <a href="index.html">Início</a>
-            <a href="#about">Experimentos</a>
+            <a href="Experimentos.html">Experimentos</a>
             <a href="cientistas.html">Cientistas</a>
             <a href="tabela.html">Tabela Periódica</a>
         </nav>
@@ -1662,6 +1730,167 @@
                     });
                 });
             });
+
+
+            const elementDescriptions = {
+  "Hidrogênio": "O Hidrogênio é o elemento químico mais leve e o mais abundante no universo, sendo essencial para a formação de estrelas e galáxias. Ele é utilizado em diversas reações químicas, como combustível em células de hidrogênio e em reações de fusão nuclear, além de ser um componente fundamental na água (H2O).",
+  "Hélio": "O Hélio é o segundo elemento mais leve e o segundo mais abundante no universo. Ele é conhecido por sua estabilidade e baixa reatividade química, sendo amplamente utilizado em balões de ar quente, como gás de proteção em soldagens e em câmaras de ressonância magnética.",
+  "Lítio": "O Lítio é um metal alcalino leve e altamente reativo. Sua principal aplicação está em baterias recarregáveis de íon-lítio, utilizadas em dispositivos eletrônicos como smartphones e veículos elétricos, devido à sua excelente capacidade de armazenamento de energia e baixa densidade.",
+  "Berílio": "O Berílio é um metal raro, leve e rígido, com alta resistência térmica. Ele é usado em ligas metálicas, especialmente na fabricação de componentes aeroespaciais e militares, além de ser utilizado em dispositivos de raios X devido à sua transparência para a radiação.",
+  "Boro": "O Boro é um metaloide encontrado em minerais e amplamente utilizado em compostos que melhoram a resistência de fibras de vidro e cerâmicas. Ele também desempenha um papel importante em fertilizantes e como dopante em semicondutores na indústria eletrônica.",
+  "Carbono": "O Carbono é o elemento base de todas as formas de vida conhecidas, formando estruturas complexas como proteínas, carboidratos, lipídios e ácidos nucleicos. Ele também é o principal componente de combustíveis fósseis e materiais como o grafite e o diamante.",
+  "Nitrogênio": "O Nitrogênio é um gás incolor e inodoro que compõe cerca de 78% da atmosfera terrestre. Ele é essencial para a formação de compostos como proteínas e ácidos nucleicos, e é utilizado na produção de fertilizantes, explosivos e na indústria de alimentos como conservante.",
+  "Oxigênio": "O Oxigênio é vital para a respiração celular em organismos aeróbicos. Ele compõe aproximadamente 21% da atmosfera terrestre e é o elemento mais abundante na crosta terrestre, estando presente em óxidos minerais e na água. É amplamente utilizado na indústria metalúrgica e médica.",
+  "Flúor": "O Flúor é um halogênio altamente reativo e corrosivo. Ele é utilizado em produtos dentários, como pastas de dente e tratamentos para fortalecer o esmalte dos dentes, além de ser empregado na fabricação de gases refrigerantes e na produção de compostos químicos industriais.",
+  "Neônio": "O Neônio é um gás nobre que emite uma luz brilhante quando submetido a uma corrente elétrica. Ele é amplamente utilizado em letreiros luminosos e sinais publicitários devido à sua capacidade de emitir luz em cores vibrantes quando eletrificado.",
+  "Sódio": "O Sódio é um metal alcalino macio e altamente reativo, encontrado principalmente na forma de cloreto de sódio (sal de cozinha). Ele desempenha um papel crucial no equilíbrio de fluidos e na condução de impulsos nervosos no corpo humano.",
+  "Magnésio": "O Magnésio é um metal leve e resistente, essencial para várias funções biológicas, incluindo a produção de energia e a síntese de proteínas. Ele é usado em ligas metálicas leves para componentes automotivos e aeroespaciais, além de estar presente em muitos suplementos alimentares.",
+  "Alumínio": "O Alumínio é um metal leve, maleável e resistente à corrosão, amplamente utilizado em embalagens, na construção civil e em veículos. Suas propriedades de leveza e resistência o tornam ideal para uso em estruturas de transporte e componentes elétricos.",
+  "Silício": "O Silício é o segundo elemento mais abundante na crosta terrestre e é amplamente utilizado na indústria eletrônica, principalmente na fabricação de semicondutores e circuitos integrados. Ele também é um componente fundamental na fabricação de vidro e cerâmicas.",
+  "Fósforo": "O Fósforo é essencial para todos os seres vivos, sendo um componente chave do DNA, RNA e das moléculas de ATP. Ele é amplamente utilizado na produção de fertilizantes, produtos químicos industriais e, historicamente, em fósforos de segurança.",
+  "Enxofre": "O Enxofre é um não-metal amplamente utilizado na fabricação de ácido sulfúrico, um dos produtos químicos mais importantes na indústria. Ele também é um componente essencial em aminoácidos e vitaminas, e pode ser encontrado em depósitos naturais e em vulcões.",
+  "Cloro": "O Cloro é um halogênio utilizado como desinfetante em tratamentos de água potável e em piscinas, além de ser um componente fundamental na fabricação de plásticos como o PVC. Seu uso industrial é extenso, abrangendo desde a produção de solventes até pesticidas.",
+  "Argônio": "O Argônio é um gás nobre inerte, amplamente utilizado em lâmpadas incandescentes, soldagem e em ambientes onde a reatividade química deve ser minimizada. Ele também é utilizado em câmaras de ionização para detectar radiação.",
+  "Potássio": "O Potássio é um metal alcalino essencial para a função celular, particularmente na manutenção do equilíbrio de eletrólitos e na condução de impulsos nervosos. Ele é amplamente utilizado em fertilizantes agrícolas e em algumas aplicações industriais.",
+  "Cálcio": "O Cálcio é um metal alcalino-terroso essencial para a formação de ossos e dentes em organismos vivos. Industrialmente, ele é utilizado na produção de cimento, na purificação de metais e na fabricação de materiais refratários.",
+  "Escândio": "O Escândio é um metal raro utilizado em ligas de alumínio para aumentar a resistência e durabilidade de componentes leves, como aqueles usados na indústria aeroespacial. Ele também é utilizado em lâmpadas de alta intensidade.",
+  "Titânio": "O Titânio é um metal forte, leve e altamente resistente à corrosão, amplamente utilizado em próteses médicas, na construção de aeronaves e em equipamentos industriais. Sua resistência à corrosão e biocompatibilidade o tornam ideal para usos médicos.",
+  "Vanádio": "O Vanádio é um metal de transição utilizado principalmente na produção de ligas de aço de alta resistência. Ele é utilizado em componentes automotivos, ferramentas de corte e equipamentos de alta pressão.",
+  "Cromo": "O Cromo é um metal brilhante e resistente à corrosão, amplamente utilizado em cromagem para revestimentos protetores e na produção de aços inoxidáveis. Ele também é utilizado como pigmento em tintas e em processos de curtimento de couro.",
+  "Manganês": "O Manganês é um metal essencial para a produção de aço, onde melhora a resistência e a durabilidade do material. Ele também desempenha um papel biológico importante na função enzimática e no metabolismo humano.",
+  "Ferro": "O Ferro é o metal mais amplamente utilizado no mundo, sendo o principal componente do aço. Ele é vital para a fabricação de materiais de construção, transporte e maquinário. Além disso, o ferro é um componente essencial da hemoglobina no sangue humano.",
+  "Cobalto": "O Cobalto é um metal utilizado em ligas resistentes ao desgaste e em baterias recarregáveis, como as de íon-lítio. Biologicamente, ele é um componente da vitamina B12, essencial para a produção de glóbulos vermelhos no corpo humano.",
+  "Níquel": "O Níquel é utilizado principalmente em ligas metálicas para aumentar a resistência à corrosão e a durabilidade. Ele é amplamente utilizado na fabricação de moedas, baterias e equipamentos industriais.",
+  "Cobre": "O Cobre é um dos melhores condutores de eletricidade e calor, sendo amplamente utilizado em fios elétricos, circuitos e sistemas de aquecimento. Ele também é usado em ligas metálicas, como o bronze, e em utensílios de cozinha.",
+  "Zinco": "O Zinco é utilizado principalmente no processo de galvanização, que protege o aço da corrosão. Ele também é um componente em ligas metálicas como o latão e é importante para a saúde humana, desempenhando um papel no sistema imunológico.",
+  "Gálio": "O Gálio é amplamente utilizado na indústria eletrônica, especialmente em dispositivos semicondutores como LEDs e painéis solares. Ele também tem aplicações em ligas de baixo ponto de fusão e em termômetros de alta precisão.",
+  "Germânio": "O Germânio é utilizado em semicondutores, especialmente em transistores e dispositivos de fibra óptica. Ele tem um papel importante na eletrônica moderna e em detectores de radiação.",
+  "Arsênio": "O Arsênio é utilizado em ligas de chumbo para aumentar sua dureza, além de ser importante na fabricação de semicondutores. Historicamente, também foi usado em pesticidas e tratamentos de madeira, embora seu uso tenha diminuído devido à toxicidade.",
+  "Selênio": "O Selênio é um metaloide utilizado na fabricação de células solares, em fotocopiadoras e na indústria do vidro para remover a cor verde causada por impurezas de ferro. Ele também é um micronutriente essencial para a saúde humana, embora em quantidades muito pequenas.",
+  "Bromo": "O Bromo é um líquido à temperatura ambiente utilizado em retardantes de chama, em tratamentos de água e na fotografia. Ele também tem aplicações em produtos farmacêuticos e na indústria de perfuração de poços de petróleo.",
+  "Criptônio": "O Criptônio é um gás nobre utilizado em lâmpadas fluorescentes e em alguns tipos de lasers. Ele também é usado na fotografia de alta velocidade devido à sua emissão de luz branca brilhante quando eletrificado.",
+  "Rubídio": "O Rubídio é um metal alcalino macio e altamente reativo, semelhante ao potássio e ao césio. Ele é utilizado em pesquisas científicas, como em relógios atômicos, e também tem aplicações em medicina e no estudo de plasmas.",
+  "Estrôncio": "O Estrôncio é um metal alcalino-terroso utilizado em pirotecnia para produzir chamas vermelhas intensas. Também é usado em ligas metálicas e na fabricação de materiais para a indústria eletrônica.",
+  "Ítrio": "O Ítrio é um metal de transição usado em LEDs e fósforos de televisores. Ele também é utilizado em lasers e como aditivo para melhorar a resistência de ligas metálicas.",
+  "Zircônio": "O Zircônio é um metal resistente à corrosão usado em ligas metálicas e em reatores nucleares devido à sua capacidade de resistir a altas temperaturas. Ele também é utilizado na fabricação de cerâmicas e ferramentas de corte.",
+  "Nióbio": "O Nióbio é um metal de transição utilizado em superligas de aço que são resistentes ao calor e à corrosão. Ele é amplamente empregado na indústria aeroespacial e em reatores nucleares.",
+  "Molibdênio": "O Molibdênio é um metal de transição utilizado em ligas de aço para aumentar a dureza e resistência ao calor. Ele é amplamente utilizado na fabricação de ferramentas, componentes de motores e em catalisadores industriais.",
+  "Tecnécio": "O Tecnécio é o primeiro elemento sintético da tabela periódica, usado em medicina nuclear para diagnósticos de imagem. Ele também é utilizado em algumas ligas metálicas como inibidor de corrosão.",
+  "Rutênio": "O Rutênio é um metal de transição utilizado em ligas de platina e paládio para aumentar sua dureza. Ele também é utilizado em catalisadores e em alguns tipos de semicondutores.",
+  "Ródio": "O Ródio é um metal raro e altamente resistente à corrosão, usado principalmente em catalisadores automotivos para reduzir as emissões de gases. Ele também é utilizado em joias e na fabricação de espelhos.",
+  "Paládio": "O Paládio é um metal raro amplamente utilizado em catalisadores automotivos e na indústria de eletrônicos. Ele também é utilizado em joalheria e na purificação de hidrogênio.",
+  "Prata": "A Prata é um excelente condutor de eletricidade e é amplamente utilizada em circuitos eletrônicos, além de joalheria, moedas e fotografia. Tem propriedades antibacterianas e é usada em medicina.",
+  "Cádmio": "O Cádmio é um metal tóxico, utilizado em baterias de níquel-cádmio e como pigmento em tintas. Seu uso tem sido restrito devido à sua toxicidade, especialmente em relação ao meio ambiente.",
+  "Índio": "O Índio é um metal macio utilizado em telas de cristal líquido (LCD) e em ligas de baixa fusão. Ele também é importante na fabricação de semicondutores e dispositivos de toque.",
+  "Estanho": "O Estanho é um metal utilizado em ligas, como o bronze, e para revestir outros metais a fim de evitar a corrosão. Ele é amplamente utilizado em soldas e na fabricação de latas de alimentos.",
+  "Antimônio": "O Antimônio é um metaloide usado em ligas para aumentar a resistência e a dureza de outros metais. Ele também é utilizado em retardantes de chama e em semicondutores.",
+  "Telúrio": "O Telúrio é um metaloide utilizado em ligas metálicas e semicondutores, além de ser importante na indústria solar. Ele também é utilizado em materiais termoelétricos.",
+  "Iodo": "O Iodo é um halogênio utilizado como antisséptico e no tratamento de deficiências de tireoide. Ele também é utilizado na produção de corantes e compostos químicos.",
+  "Xenônio": "O Xenônio é um gás nobre utilizado em lâmpadas de descarga de alta intensidade, como faróis de carros, e em anestesia geral. Ele também é utilizado em lasers e em estudos científicos.",
+  "Césio": "O Césio é um metal alcalino altamente reativo, utilizado principalmente em relógios atômicos e em sondas de perfuração de poços de petróleo. Ele também tem aplicações em propulsão iônica em satélites.",
+  "Bário": "O Bário é um metal alcalino-terroso utilizado em radiografias do trato gastrointestinal, onde ele absorve os raios X. Também é utilizado em fogos de artifício para criar cores verdes.",
+  "Lantânio": "O Lantânio é um metal de terras raras utilizado em baterias recarregáveis, especialmente em veículos híbridos. Ele também é usado em catalisadores e na produção de vidros especiais.",
+  "Cério": "O Cério é o mais abundante dos metais de terras raras, utilizado em catalisadores automotivos e em polimento de vidros. Ele também é utilizado em ligas metálicas e em alguns tipos de lâmpadas.",
+  "Praseodímio": "O Praseodímio é um metal de terras raras utilizado em ligas de magnésio e em ímãs de alta resistência. Ele também é utilizado em lasers e em vidros ópticos especiais.",
+  "Neodímio": "O Neodímio é um metal de terras raras amplamente utilizado em ímãs de alta potência, como aqueles usados em motores elétricos e em fones de ouvido. Ele também é utilizado em lasers.",
+  "Promécio": "O Promécio é um metal radioativo utilizado em baterias nucleares de longa duração e em alguns tipos de marcadores luminosos. Ele tem aplicações limitadas devido à sua radioatividade.",
+  "Samário": "O Samário é um metal de terras raras utilizado em ímãs permanentes de alta resistência e em reatores nucleares. Ele também tem aplicações em lasers e em vidros ópticos.",
+  "Európio": "O Európio é um metal de terras raras utilizado em fósforos de televisores e em lâmpadas fluorescentes. Ele também é utilizado em materiais luminescentes e em reatores nucleares.",
+  "Gadolínio": "O Gadolínio é utilizado em agentes de contraste para ressonância magnética e em alguns tipos de reatores nucleares. Ele também tem aplicações em ligas metálicas e em materiais magnéticos.",
+  "Térbio": "O Térbio é um metal de terras raras utilizado em fósforos de telas e em dispositivos de iluminação. Ele também é utilizado em ligas e em materiais magnetoestrictivos.",
+  "Disprósio": "O Disprósio é um metal de terras raras utilizado em ímãs permanentes e em reatores nucleares. Ele também tem aplicações em materiais magnetoestrictivos e em lasers.",
+  "Hólmio": "O Hólmio é um metal de terras raras utilizado em ímãs de alta potência e em dispositivos de ressonância magnética. Ele também tem aplicações em lasers e em alguns tipos de cristais ópticos.",
+  "Érbio": "O Érbio é utilizado em fibras ópticas para amplificação de sinais e em lasers médicos. Ele também tem aplicações em ligas metálicas e em dispositivos eletrônicos.",
+  "Túlio": "O Túlio é um metal de terras raras utilizado em lasers de alta potência e em algumas aplicações nucleares. Ele também tem aplicações limitadas devido à sua raridade e alto custo.",
+  "Itérbio": "O Itérbio é utilizado em lasers de fibra óptica e em materiais de alta resistência. Ele também tem aplicações em dispositivos de ressonância magnética e em reatores nucleares.",
+  "Lutécio": "O Lutécio é o elemento mais pesado das terras raras, utilizado em catalisadores e em equipamentos de imagem médica, como PET scans. Ele também é usado em alguns tipos de lasers.",
+  "Háfnio": "O Háfnio é utilizado em ligas resistentes ao calor e em reatores nucleares. Ele também é utilizado em dispositivos semicondutores e em materiais de alta resistência.",
+  "Tântalo": "O Tântalo é utilizado em capacitores eletrônicos e em próteses médicas devido à sua alta resistência à corrosão. Ele também é utilizado em ligas de alta resistência.",
+  "Tungstênio": "O Tungstênio é um metal com o ponto de fusão mais alto de todos os elementos, utilizado em filamentos de lâmpadas e em ferramentas de corte de alta resistência.",
+  "Rênio": "O Rênio é utilizado em superligas de alta resistência ao calor, principalmente em motores de aviões e em reatores nucleares. Ele também é utilizado em catalisadores para a indústria petroquímica.",
+  "Ósmio": "O Ósmio é um metal extremamente denso e resistente, utilizado em ligas metálicas para aumentar a dureza de outros metais. Ele também é utilizado em contatos elétricos e em dispositivos médicos.",
+  "Irídio": "O Irídio é um metal raro e resistente à corrosão, utilizado em ligas para aumentar a resistência de outros metais. Ele também é utilizado em catalisadores e em dispositivos eletrônicos.",
+  "Platina": "A Platina é um metal precioso utilizado em joalheria, catalisadores automotivos e na indústria química. Ela também é amplamente usada em dispositivos eletrônicos e em implantes médicos.",
+  "Ouro": "O Ouro é um metal precioso amplamente utilizado em joalheria, moedas e eletrônicos devido à sua excelente condutividade e resistência à corrosão. Ele também é utilizado em dispositivos médicos.",
+  "Mercúrio": "O Mercúrio é um metal líquido à temperatura ambiente, utilizado em termômetros, barômetros e em lâmpadas fluorescentes. Seu uso está sendo gradualmente eliminado devido à sua toxicidade.",
+  "Tálio": "O Tálio é um metal tóxico utilizado em dispositivos eletrônicos e em alguns tipos de vidros especiais. Seu uso é restrito devido à sua toxicidade.",
+  "Chumbo": "O Chumbo é um metal pesado utilizado em baterias, proteção contra radiação e em alguns tipos de soldas. Seu uso foi reduzido devido à sua toxicidade.",
+  "Bismuto": "O Bismuto é um metal pesado utilizado em ligas metálicas e em alguns medicamentos, como o subsalicilato de bismuto. Ele também é utilizado em soldas e em pigmentos.",
+  "Polônio": "O Polônio é um metal radioativo utilizado em dispositivos antiestáticos e em algumas aplicações nucleares. Ele é altamente tóxico e radioativo.",
+  "Astato": "O Astato é um halogênio radioativo extremamente raro, com poucas aplicações devido à sua alta instabilidade e radioatividade.",
+  "Radônio": "O Radônio é um gás nobre radioativo que ocorre naturalmente como produto de decaimento do rádio. Ele é utilizado em algumas terapias médicas, mas é perigoso devido à sua radioatividade.",
+  "Frâncio": "O Frâncio é um metal alcalino radioativo extremamente raro, com poucas aplicações devido à sua curta meia-vida e alta radioatividade.",
+  "Rádio": "O Rádio é um metal alcalino-terroso radioativo, utilizado historicamente em radioterapia, mas seu uso foi reduzido devido aos riscos à saúde.",
+  "Actínio": "O Actínio é um metal radioativo utilizado em algumas pesquisas científicas e em terapias de combate ao câncer. Ele também tem aplicações limitadas devido à sua alta radioatividade.",
+  "Tório": "O Tório é um metal radioativo utilizado como combustível em alguns tipos de reatores nucleares. Ele também é utilizado em ligas metálicas e em dispositivos de iluminação.",
+  "Protactínio": "O Protactínio é um metal radioativo com poucas aplicações devido à sua alta radioatividade e raridade. Ele é utilizado principalmente em pesquisas científicas.",
+  "Urânio": "O Urânio é um metal pesado radioativo utilizado como combustível em reatores nucleares e em armas nucleares. Ele também tem aplicações em alguns tipos de vidros e cerâmicas.",
+  "Neptúnio": "O Neptúnio é um metal radioativo com poucas aplicações comerciais. Ele é utilizado principalmente em pesquisas científicas e em reatores nucleares.",
+  "Plutônio": "O Plutônio é um metal radioativo utilizado como combustível em reatores nucleares e em armas nucleares. Ele também é utilizado em dispositivos de geração de energia para espaçonaves.",
+  "Amerício": "O Amerício é um metal radioativo utilizado em detectores de fumaça e em algumas pesquisas científicas. Ele também é utilizado em fontes de radiação para medições industriais.",
+  "Cúrio": "O Cúrio é um metal radioativo utilizado principalmente em pesquisas científicas e em geradores termoelétricos para espaçonaves.",
+  "Berquélio": "O Berquélio é um metal radioativo com aplicações limitadas devido à sua raridade e alta radioatividade. Ele é utilizado principalmente em pesquisas científicas.",
+  "Califórnio": "O Califórnio é um metal radioativo utilizado em pesquisas científicas, especialmente em fontes de nêutrons para estudos de materiais e em tratamentos de câncer.",
+  "Einstênio": "O Einstênio é um metal radioativo extremamente raro, com poucas aplicações comerciais. Ele é utilizado principalmente em pesquisas científicas.",
+  "Férmio": "O Férmio é um metal radioativo com poucas aplicações devido à sua raridade e alta radioatividade. Ele é utilizado principalmente em pesquisas científicas.",
+  "Mendelévio": "O Mendelévio é um metal radioativo utilizado em pesquisas científicas para estudar as propriedades de elementos transurânicos.",
+  "Nobélio": "O Nobélio é um metal radioativo utilizado principalmente em pesquisas científicas sobre a estrutura atômica de elementos pesados.",
+  "Laurêncio": "O Laurêncio é um metal radioativo utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Rutherfordio": "O Rutherfordio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Dúbnio": "O Dúbnio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Seabórgio": "O Seabórgio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Bóhrio": "O Bóhrio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Hássio": "O Hássio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Meitnério": "O Meitnério é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Darmstádio": "O Darmstádio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Roentgênio": "O Roentgênio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Copernício": "O Copernício é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Nihônio": "O Nihônio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Fleróvio": "O Fleróvio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Moscóvio": "O Moscóvio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Livermório": "O Livermório é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Tenessino": "O Tenessino é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados.",
+  "Oganessônio": "O Oganessônio é um elemento sintético utilizado em pesquisas científicas para estudar as propriedades de elementos superpesados."
+};
+
+
+
+// Seleciona o modal e o botão de fechar
+const modal = document.getElementById("elementModal");
+const span = document.getElementsByClassName("close")[0];
+
+// Adiciona evento de clique para cada elemento
+document.querySelectorAll('.element').forEach(el => {
+  el.addEventListener('click', function() {
+    const elementName = this.querySelector('.element-name').textContent;
+    const atomicNumber = this.querySelector('.atomic-number').textContent;
+    const atomicWeight = this.querySelector('.atomic-weight').textContent;
+
+    // Preenche os dados no modal
+    document.getElementById('element-name').textContent = elementName;
+    document.getElementById('atomic-number').textContent = atomicNumber;
+    document.getElementById('atomic-weight').textContent = atomicWeight;
+
+    // Adiciona a descrição do elemento
+    const description = elementDescriptions[elementName] || "Descrição não disponível.";
+    document.getElementById('element-description').textContent = description;
+    
+    // Exibe o modal
+    modal.style.display = "block";
+  });
+});
+
+// Fecha o modal quando o usuário clica no "X"
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Fecha o modal se o usuário clicar fora dele
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 
 

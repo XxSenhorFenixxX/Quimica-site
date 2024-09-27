@@ -18,7 +18,7 @@
         }
 
         header {
-            background-color: #6cb2e0;
+            background-color: #333;
             color: rgba(255, 255, 255, 0.562);
             padding: 10px 20px;
             display: flex;
@@ -109,18 +109,51 @@
             color: black;
         }
 
-        /* Ajuste das imagens no carrossel */
-        .swiper-container img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
         /* Ajuste das imagens nos cards */
         .card img {
             width: 100%;
             height: 250px;
             object-fit: cover;
+        }
+
+        .cards {
+            padding: 70px;
+        }
+
+        a:focus,
+        a:hover,
+        .btn-primary:focus,
+        .btn-primary:hover {
+            outline: none;
+            box-shadow: none;
+            border: 2px solid black; /* Mantém a borda preta */
+        }
+
+        .btn-primary {
+            background-color: white; /* Fundo branco */
+            border: 2px solid black; /* Borda preta */
+            color: black; /* Cor do texto preta */
+        }
+
+        /* Estilo do béquer */
+        .beaker {
+            width: 100px;
+            height: 200px;
+            border: 5px solid #000;
+            border-radius: 10px;
+            position: relative;
+            background-color: #fff;
+            overflow: hidden;
+            margin: 20px auto; /* Centraliza o béquer */
+        }
+
+        .liquid {
+            width: 100%;
+            height: 40%; /* Altura inicial do líquido ajustada para 40% */
+            background-color: rgb(180, 180, 180); /* Cor inicial do líquido */
+            position: absolute;
+            bottom: 0;
+            transition: height 0.3s ease, background-color 0.5s ease;
         }
     </style>
 </head>
@@ -133,7 +166,7 @@
         </div>
         <nav>
             <a href="index.html">Início</a>
-            <a href="#experimentos">Experimentos</a>
+            <a href="Experimentos.html">Experimentos</a>
             <a href="cientistas.html">Cientistas</a>
             <a href="tabela.html">Tabela Periódica</a>
         </nav>
@@ -146,89 +179,15 @@
             <p>Bem-vindo à seção de experimentos químicos! Aqui você encontrará uma variedade de experimentos
                 interessantes que você pode realizar. Explore e divirta-se aprendendo mais sobre a química!</p>
         </div>
-    </div>
 
-
-    <!-- Cards dos experimentos -->
-    <div class="row">
-        <!-- Card do Fogo Colorido -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/fogo.jpeg" class="card-img-top" alt="Fogo Colorido">
-                <div class="card-body">
-                    <h5 class="card-title">Mudança de Cor do Fogo</h5>
-                    <p class="card-text">Experimento fascinante que mostra como diferentes compostos químicos alteram a cor das chamas.</p>
-                    <a href="https://www.youtube.com/watch?v=Vb5eDb4EkQY" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card do Relógio de Iodo -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/relogio.webp" class="card-img-top" alt="Relógio de Iodo">
-                <div class="card-body">
-                    <h5 class="card-title">Relógio de Iodo</h5>
-                    <p class="card-text">Veja como reações químicas podem ser cronometradas de forma impressionante com o experimento do Relógio de Iodo.</p>
-                    <a href="https://www.youtube.com/watch?v=xxiWtUAF6Sw" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card da Torre de Líquidos -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/torre.jpeg" class="card-img-top" alt="Torre de Líquidos">
-                <div class="card-body">
-                    <h5 class="card-title">Torre de Líquidos</h5>
-                    <p class="card-text">Um experimento visualmente impressionante que demonstra a diferença de densidade entre diferentes líquidos.</p>
-                    <a href="https://www.youtube.com/watch?v=XO6uGnx7fgc" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Novos Cards dos Experimentos -->
-    <div class="row mt-4">
-        <!-- Card do Elefante de Espuma -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/elefante.jpg" class="card-img-top" alt="Elefante de Espuma">
-                <div class="card-body">
-                    <h5 class="card-title">Pasta de Dente de Elefante</h5>
-                    <p class="card-text">Uma reação explosiva que resulta em um fluxo de espuma gigante! Um ótimo exemplo de decomposição catalítica.</p>
-                    <a href="https://www.youtube.com/watch?v=PygjKCTcwqY" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card do Vulcão Químico -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/vulcao.jpg" class="card-img-top" alt="Vulcão Químico">
-                <div class="card-body">
-                    <h5 class="card-title">Vulcão Químico</h5>
-                    <p class="card-text">Simule a erupção de um vulcão com uma reação química entre bicarbonato de sódio e vinagre.</p>
-                    <a href="https://www.youtube.com/watch?v=YxAEyF7M-7s" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card do Gelo Quente -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="Fotos/gelo-quente.jpg" class="card-img-top" alt="Gelo Quente">
-                <div class="card-body">
-                    <h5 class="card-title">Gelo Quente</h5>
-                    <p class="card-text">Transforme uma solução em um sólido com aparência de gelo que emite calor durante a formação!</p>
-                    <a href="https://www.youtube.com/watch?v=So9KyFH8huc" class="btn btn-primary">Ver Experimento</a>
-                </div>
-            </div>
+        <!-- Adicionando o béquer animado -->
+        <div class="beaker" id="beaker">
+            <div class="liquid" id="liquid"></div>
         </div>
     </div>
 
     <script>
-        //mudar do tema claro pro escuro
+        // Mudar do tema claro para o escuro
         function toggleMode() {
             const body = document.body;
             const button = document.querySelector('.mode-icon');
@@ -247,17 +206,28 @@
             }
         }
 
-        //carrosel
-        var swiper = new Swiper('.swiper-container', {
-            loop: true,
-            autoplay: {
-                delay: 5000,  // Troca de imagem a cada 5 segundos
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
+        // Animação do béquer
+        const beaker = document.getElementById('beaker');
+        const liquid = document.getElementById('liquid');
+
+        let isPouring = false;
+
+        beaker.addEventListener('mouseenter', () => {
+            if (!isPouring) {
+                isPouring = true;
+                liquid.style.height = '80%'; // Aumenta o nível do líquido
+
+                setTimeout(() => {
+                    liquid.style.backgroundColor = 'black'; // Muda a cor do líquido
+                }, 2000); // Tempo para mudar a cor
+
+                // Restaura o líquido após 5 segundos
+                setTimeout(() => {
+                    liquid.style.height = '40%'; // Volta para 40%
+                    liquid.style.backgroundColor = 'rgb(180, 180, 180)'; // Cor original do líquido
+                    isPouring = false; // Permite nova animação
+                }, 5000); // Tempo total da animação
+            }
         });
     </script>
 
