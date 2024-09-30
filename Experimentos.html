@@ -120,7 +120,7 @@
             overflow: hidden;
             margin: 20px auto 0;
             transition: transform 1s ease, margin-left 0.5s ease;
-            top: 35px;
+            top: 230px;
         }
 
         /* Biquinho do béquer */
@@ -179,6 +179,7 @@
         .beaker-hidden {
             display: none;
         }
+
 
         .bico-bunsen {
             width: 100px;
@@ -318,7 +319,7 @@
             gap: 10px;
             /* Adicionando um espaço fixo entre os bicos */
             margin-top: 5px;
-            padding: 0 300px;
+            padding: 0 400px;
         }
 
         .tower {
@@ -377,6 +378,76 @@
         .layer4 {
             bottom: 75%;
         }
+
+        .liquid {
+            width: 100%;
+            height: 40%;
+            background-color: rgb(180, 180, 180);
+            position: absolute;
+            bottom: 0;
+            transition: height 0.3s ease, background-color 0.5s ease;
+        }
+
+        /* Pasta de Elefante - Animação */
+        /* Béquer */
+        .beaker {
+            width: 100px;
+            height: 200px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            position: relative;
+            background-color: #fff;
+            overflow: visible;
+            /* Permitir que a pasta transborde para fora */
+            margin: 20px auto;
+            transition: transform 1s ease;
+        }
+
+        /* Animação Pasta de Elefante Revisada */
+        @keyframes pastaElefanteErupcao {
+            0% {
+                height: 0%;
+                /* Começa no fundo */
+                transform: scaleY(1);
+                /* Sem aumento horizontal */
+            }
+
+            50% {
+                height: 120%;
+                /* Cresce dentro do beaker */
+                transform: scaleY(1.1);
+                /* Cresce levemente só na altura */
+            }
+
+            100% {
+                height: 130%;
+                /* Cresce levemente para fora */
+                transform: scaleY(1.15);
+                /* Continua crescendo apenas na altura */
+            }
+        }
+
+        .liquid-pasta {
+            background-color: #ffcc00;
+            /* Cor da pasta */
+            width: 100%;
+            /* Mantém a largura do beaker */
+            height: 0%;
+            /* Começa vazio */
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform-origin: bottom;
+            /* Define o ponto de origem */
+            animation: none;
+            /* Sem animação até ser acionada */
+            transition: height 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .ajustar {
+            transform: translateY(-350%);
+        }
     </style>
 </head>
 
@@ -413,7 +484,8 @@
             </div>
 
             <!-- Béquer 1 será oculto inicialmente -->
-            <div class="beaker beaker-hidden" id="beaker1" style="left: -500px;" data-bs-toggle="modal" data-bs-target="#modalIodo">
+            <div class="beaker beaker-hidden" id="beaker1" style="left: -500px;" data-bs-toggle="modal"
+                data-bs-target="#modalIodo">
                 <div class="liquid" id="liquid1"></div>
                 <!-- Adicionando marcas de volume -->
                 <div class="volume-marker marker-20"></div>
@@ -495,7 +567,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        A torre de líquidos é um equipamento utilizado para a separação de líquidos com diferentes densidades e
+                        A torre de líquidos é um equipamento utilizado para a separação de líquidos com diferentes
+                        densidades e
                         propriedades. É frequentemente utilizada em experimentos de destilação e análise de soluções.
                     </div>
                 </div>
@@ -510,23 +583,58 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        O relógio de iodo é um experimento clássico que demonstra a cinética de reações químicas. Ele envolve a 
-                        adição de soluções de iodeto e um agente oxidante, resultando em uma mudança de cor que indica a 
-                        progressão da reação. Este experimento é amplamente utilizado para estudar a dinâmica de reações em 
+                        O relógio de iodo é um experimento clássico que demonstra a cinética de reações químicas. Ele
+                        envolve a
+                        adição de soluções de iodeto e um agente oxidante, resultando em uma mudança de cor que indica a
+                        progressão da reação. Este experimento é amplamente utilizado para estudar a dinâmica de reações
+                        em
                         química.
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
+
+
+
+
         <div class="tower" data-bs-toggle="modal" data-bs-target="#modaltower">
             <div class="layer layer1"></div>
             <div class="layer layer2"></div>
             <div class="layer layer3"></div>
             <div class="layer layer4"></div>
         </div>
+
+        <!-- Béquer da Pasta de Elefante -->
+        <div class="ajustar">
+            <div class="beaker" id="beakerPasta" style="left: -100px;" data-bs-toggle="modal"
+                data-bs-target="#modalPasta">
+                <div class="liquid liquid-pasta" id="liquidPasta"></div>
+                <!-- Marcas de volume -->
+                <div class="volume-marker marker-20"></div>
+                <div class="volume-marker marker-40"></div>
+                <div class="volume-marker marker-60"></div>
+                <div class="volume-marker marker-80"></div>
+            </div>
+
+        </div>
+
+        <!-- Modal para Pasta de Elefante -->
+        <div class="modal fade" id="modalPasta" tabindex="-1" aria-labelledby="modalLabelPasta" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabelPasta">Pasta de Elefante</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        A pasta de elefante é uma reação química entre peróxido de hidrogênio, detergente e levedura,
+                        resultando em uma rápida liberação de espuma, criando uma erupção semelhante a uma pasta
+                        gigante.
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <script>
             // Alterna o modo claro e escuro
@@ -637,6 +745,24 @@
                 setTimeout(() => { layer3.style.height = '17%'; }, 2500);
                 setTimeout(() => { layer4.style.height = '33%'; }, 3500);
             };
+
+            // Seleciona o beaker e o líquido da Pasta de Elefante
+            const beakerPasta = document.getElementById('beakerPasta');
+            const liquidPasta = document.getElementById('liquidPasta');
+
+            // Adiciona evento para iniciar a animação
+            beakerPasta.addEventListener('mouseenter', () => {
+                // Ativa a animação de erupção
+                liquidPasta.style.animation = 'pastaElefanteErupcao 3s ease forwards';
+
+                // Reseta a animação após 5 segundos para permitir repetir
+                setTimeout(() => {
+                    liquidPasta.style.animation = 'none'; // Reseta a animação
+                    liquidPasta.style.height = '0%'; // Volta para o estado inicial
+                }, 5000); // Duração total da animação
+            });
+
+
 
         </script>
 
