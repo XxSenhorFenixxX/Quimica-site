@@ -76,14 +76,20 @@
         }
 
         .dark-mode {
-            background-color: #333;
-            color: white;
-        }
+    background-color: #333;
+    color: white; /* A cor do texto será branca no tema escuro */
+}
 
-        .dark-mode header {
-            background-color: #6cb2e0;
-            color: rgba(255, 255, 255, 0.562);
-        }
+.dark-mode header {
+    background-color: #6cb2e0;
+    color: rgba(255, 255, 255, 0.562); /* Cabeçalho com cor mais clara */
+}
+
+.dark-mode .text-container {
+    background-color: #555;  /* Cor do fundo mais escura no tema escuro */
+    color: white; /* Cor do texto branca no tema escuro */
+}
+
 
         .content {
             padding: 20px;
@@ -306,6 +312,12 @@
         .ajustar {
             transform: translateY(-318%);
         }
+
+        .dark-mode .modal-content {
+    background-color: #333; /* Fundo escuro para o modal */
+    color: white; /* Texto branco para visibilidade */
+}
+
     </style>
 </head>
 
