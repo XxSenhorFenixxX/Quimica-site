@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementos Químicos</title>
+    <title>Terminologias</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
+       body {
             margin: 0;
             font-family: Arial, sans-serif;
             transition: background-color 0.3s, color 0.3s;
@@ -92,131 +92,67 @@
             background-color: #6cb2e0;
             color: rgba(255, 255, 255, 0.562);
         }
-
-        .image-container {
-            position: relative;
-            text-align: center;
-            color: white;
-            margin: 20px auto;
-            max-width: 800px;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            animation: slideIn 1s ease-out;
-        }
-
-        .image-container .text {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
+        .mode-icon {
+            cursor: pointer;
             font-size: 24px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            width: 80%;
+            background: none;
+            border: none;
+            color: white;
+            transition: color 0.3s;
         }
-
-        .description {
-            position: absolute;
-            top: 30%;
-            left: 70%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 18px;
-            line-height: 1.6;
-            width: 80%;
-        }
-
 
         .text-container {
-            position: relative;
-            margin: 20px auto;
             max-width: 800px;
+            margin: 20px auto;
             padding: 20px;
             font-size: 18px;
             line-height: 1.6;
             border-radius: 10px;
             backdrop-filter: blur(5px);
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            background-color: #f4f4f9;
             transition: background-color 0.3s, color 0.3s;
-            animation: fadeIn 1s ease-in-out;
         }
 
-        .more-text {
-            display: none;
-            margin-top: 10px;
-            opacity: 0;
-            transition: opacity 0.3s;
+        .dark-mode {
+            background-color: #333;
+            color: white;
         }
 
-        .more-text.show {
-            display: block;
-            opacity: 1;
+        .dark-mode header {
+            background-color: #6cb2e0;
+            color: rgba(255, 255, 255, 0.562);
         }
 
-        .continue-button,
-        .collapse-button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #444;
-            background-color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .dark-mode .text-container {
+            background-color: #444;
+            color: #ddd;
+        }
+
+        h2 {
             text-align: center;
-            transition: background-color 0.3s, color 0.3s;
+            margin-bottom: 20px;
         }
 
-        .continue-button:hover,
-        .collapse-button:hover {
-            color: #a3a3a3;;
+        ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        .light-mode .continue-button,
-        .light-mode .collapse-button {
-            color: #444;
-            background-color: #dbdbdb;
+        li {
+            background: #e9ecef;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
-        .dark-mode .continue-button,
-        .dark-mode .collapse-button {
-            color: #ffffff;
-            background-color: #dbdbdb;
+        .dark-mode li {
+            background: #555;
+            border-color: #666;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-/* Container principal do botão */
+        /* Container principal do botão */
 .toggle-container {
     display: flex;
     align-items: center;
@@ -405,8 +341,6 @@
     right: 30%;
 }
 
-
-
     </style>
 </head>
 
@@ -414,14 +348,14 @@
 
     <header>
         <div class="logo">
-            <a href="#home"><i class="fas fa-flask"></i>Elementos Químicos</a>
+            <a href="index.html"><i class="fas fa-flask"></i> Voltar para Elementos Químicos</a>
         </div>
         <nav>
             <a href="index.html">Início</a>
             <a href="Experimentos.html">Experimentos</a>
             <a href="terminlogias.html">Terminologias</a>
             <a href="cientistas.html">Cientistas</a>
-            <a href="tabela.html">Tabela Periodica</a>
+            <a href="tabela.html">Tabela Periódica</a>
         </nav>
         <div class="toggle-container" onclick="toggleMode()">
             <div class="toggle">
@@ -431,60 +365,30 @@
                 </div>
             </div>
         </div>
-              
     </header>
 
     <div class="text-container">
-        <center>
-            <h2>
-                A foto mais genial do mundo
-            </h2>
-        </center>
-        <center><img src="Fotos/dowload.jpg" alt="pioneiros"></center>
-        <div>
-            <center>
-                <h4>
-                    A Conferência de Solvay de 1927 reuniu os maiores cientistas da época para discutir as novas
-                    descobertas da física quântica. A icônica foto tirada nesse evento captura 29 mentes brilhantes,
-                    incluindo nomes como Albert Einstein, Marie Curie e Niels Bohr. Com 17 ganhadores do Prêmio Nobel,
-                    essa imagem simboliza um momento crucial na história da ciência, representando o impacto do trabalho
-                    colaborativo no avanço do conhecimento. <br>
-                </h4>
-                <button class="continue-button" onclick="showMoreText()">Continuar</button>
-                <div class="more-text">
-                    <center>
-                        <h4>
-                            Em 1927, a cidade de Bruxelas foi o palco de um dos encontros científicos mais importantes
-                            da história: a 5ª Conferência de Solvay. Essa conferência reuniu alguns dos maiores
-                            cientistas do século XX para debater as descobertas revolucionárias da física quântica. A
-                            fotografia tirada durante esse evento é amplamente considerada uma das imagens mais icônicas
-                            da ciência.
-                            <br><br>
-                            Nessa foto histórica, vemos 29 dos cientistas mais brilhantes da época, incluindo 17 futuros
-                            ou atuais ganhadores do Prêmio Nobel. Entre os mais notáveis estão Albert Einstein, Marie
-                            Curie, Niels Bohr, Werner Heisenberg, e Erwin Schrödinger. Cada um desses nomes desempenhou
-                            um papel fundamental na construção das bases da física moderna e da mecânica quântica.
-                            <br><br>
-                            Marie Curie, única mulher presente na imagem, é uma das personalidades mais admiradas da
-                            ciência, tendo conquistado dois Prêmios Nobel, em Física e Química. Sua presença no centro
-                            da imagem simboliza seu papel pioneiro em uma época dominada por homens. Já Albert Einstein,
-                            conhecido por sua teoria da relatividade, é visto sentado na primeira fila, demonstrando sua
-                            liderança intelectual entre seus pares.
-                            <br><br>
-                            Este encontro foi um marco para discussões que moldaram o entendimento moderno do universo.
-                            A fotografia da Conferência de Solvay não é apenas uma recordação de um momento no tempo,
-                            mas uma celebração do poder do conhecimento coletivo, que continua a influenciar a ciência
-                            até hoje.
-                        </h4>
-                        <button class="collapse-button" onclick="hideMoreText()">Recolher</button>
-                    </center>
-                </div>
-            </center>
-        </div>
+        <h2>Lista de Terminologias Científicas</h2>
+        <ul>
+            <li><b>1-hidroxi-2-metil-benzeno:</b> o-cresol</li>
+            <li><b>1-hidroxi-3-metil-benzeno:</b> m-cresol</li>
+            <li><b>1-hidroxi-4-metil-benzeno:</b> p-cresol</li>
+            <li><b>Absorbância:</b> Medida da capacidade de absorção de luz</li>
+            <li><b>Ácidos:</b> Substâncias que liberam ou produzem íons H+ quando dissolvidas em água. Fórmulas dos ácidos contêm átomos de hidrogênio e um grupo aniônico.</li>
+            <li><b>Alcanos:</b> Hidrocarbonetos com ligações simples, formando cadeias carbônicas saturadas.</li>
+            <li><b>Aldeídos:</b> Compostos orgânicos com o grupo carbonila na extremidade da cadeia. A numeração começa da extremidade com o grupo funcional.</li>
+            <li><b>Bicarbonatos:</b> Íons relacionados à interação do gás carbônico com a água.</li>
+            <li><b>Calcinação:</b> Processo que transforma o hidrato em uma mistura cristalina de formas alotrópicas de Al₂O₃.</li>
+            <li><b>Catalisador:</b> Substância que diminui a energia de ativação e acelera uma reação química.</li>
+            <li><b>Cetona:</b> Composto orgânico com grupo carbonila ligado a dois grupos orgânicos. Exemplo: acetona (propanona).</li>
+            <li><b>Corrosão:</b> Processo pelo qual metais são transformados em óxidos ou outros compostos, levando à deterioração gradual.</li>
+            <li><b>Densidade:</b> Massa por unidade de volume. Depende da temperatura e do estado físico da substância.</li>
+            <li><b>Solubilidade:</b> Quantidade máxima de um soluto que pode ser dissolvido em um solvente, variando com a temperatura.</li>
+        </ul>
     </div>
 
     <script>
-function toggleMode() {
+      function toggleMode() {
     const body = document.body;
     const toggleContainer = document.querySelector('.toggle-container');
 
@@ -498,22 +402,6 @@ function toggleMode() {
         toggleContainer.classList.remove('dark');
     }
 }
-
-
-        function showMoreText() {
-            const moreText = document.querySelector('.more-text');
-            const button = document.querySelector('.continue-button');
-            moreText.classList.add('show');
-            button.style.display = 'none';
-        }
-
-        function hideMoreText() {
-            const moreText = document.querySelector('.more-text');
-            const button = document.querySelector('.continue-button');
-            moreText.classList.remove('show');
-            button.style.display = 'block';
-        }
-
     </script>
 
 </body>

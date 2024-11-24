@@ -300,6 +300,215 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Container principal do botão */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 80px; /* Botão menor */
+    height: 40px;
+    background: #cce7ff; /* Fundo claro - dia */
+    border-radius: 50px;
+    position: relative;
+    transition: background 0.5s ease;
+    overflow: hidden;
+}
+
+.toggle-container.dark {
+    background: #1c1f4c; /* Fundo escuro - noite */
+}
+
+/* Toggle interno */
+.toggle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px; /* Menor espaçamento */
+    box-sizing: border-box;
+}
+
+/* Bolinha deslizante */
+.circle {
+    width: 32px; /* Bolinha menor */
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    transition: left 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+/* Posicionamento do círculo no modo escuro */
+.toggle-container.dark .circle {
+    left: calc(100% - 36px);
+}
+
+/* Sol com nuvem */
+.sun-with-cloud {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; /* Ajustado para a bolinha menor */
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffd700, #ffa500);
+    box-shadow: 0 0 6px #ffa500;
+    z-index: 1;
+}
+
+.sun-with-cloud::before,
+.sun-with-cloud::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.sun-with-cloud::before {
+    width: 25px;
+    height: 12px;
+    left: -2px;
+}
+
+.sun-with-cloud::after {
+    width: 18px;
+    height: 9px;
+    right: -8px;
+}
+
+/* Esconde o sol no modo escuro */
+.toggle-container.dark .sun-with-cloud {
+    display: none;
+}
+
+/* Lua com estrelas */
+.moon-with-stars {
+    position: absolute;
+    width: 16px; /* Ajustado para a bolinha menor */
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f0e68c 20%, transparent 50%);
+    z-index: 1;
+    box-shadow: 0 0 8px #f0e68c;
+    display: none;
+}
+
+.moon-with-stars::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: -6px;
+    left: -4px;
+    background: #f0e68c;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #f0e68c;
+}
+
+.moon-with-stars::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    top: 6px;
+    right: -6px;
+    background: #f0e68c;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #f0e68c;
+}
+
+/* Mostra a lua no modo escuro */
+.toggle-container.dark .moon-with-stars {
+    display: block;
+}
+
+/* Estrelas no fundo - modo escuro */
+.toggle-container.dark::before,
+.toggle-container.dark::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #fff;
+}
+
+.toggle-container.dark::before {
+    width: 4px;
+    height: 4px;
+    top: 5px;
+    left: 10px;
+}
+
+.toggle-container.dark::after {
+    width: 3px;
+    height: 3px;
+    bottom: 10px;
+    right: 15px;
+}
+
+/* Estrelas adicionais */
+.toggle-container.dark .extra-stars {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #fff;
+}
+
+.toggle-container.dark .extra-stars:nth-child(1) {
+    top: 10%;
+    left: 20%;
+}
+
+.toggle-container.dark .extra-stars:nth-child(2) {
+    top: 15%;
+    right: 15%;
+}
+
+.toggle-container.dark .extra-stars:nth-child(3) {
+    bottom: 20%;
+    left: 25%;
+}
+
+.toggle-container.dark .extra-stars:nth-child(4) {
+    bottom: 10%;
+    right: 30%;
+}
+
+/* Estilo para o botão "Todos" */
+.filter-buttons button[data-all] {
+    background-color: #ff9800; /* Laranja */
+    border: 1px solid #e65100; /* Bordas mais escuras */
+    font-weight: bold; /* Destaque no texto */
+    padding: 8px 14px; /* Ajuste de tamanho */
+    border-radius: 6px; /* Bordas arredondadas */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Efeito hover para o botão "Todos" */
+.filter-buttons button[data-all]:hover {
+    background-color: #e65100; /* Escurecer no hover */
+    border-color: #ff9800; /* Bordas mais claras no hover */
+}
+
+
     </style>
 </head>
 
@@ -312,11 +521,19 @@
         <nav>
             <a href="index.html">Início</a>
             <a href="Experimentos.html">Experimentos</a>
+            <a href="terminlogias.html">Terminologias</a>
             <a href="cientistas.html">Cientistas</a>
             <a href="tabela.html">Tabela Periodica</a>
             <input type="text" id="search-box" class="search-box" placeholder="Buscar cientistas...">
         </nav>
-        <button class="mode-icon" onclick="toggleMode()">🌙</button>
+        <div class="toggle-container" onclick="toggleMode()">
+            <div class="toggle">
+                <div class="circle">
+                    <div class="sun-with-cloud"></div>
+                    <div class="moon-with-stars"></div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <div class="scientists">
@@ -325,6 +542,7 @@
         </center>
         <div class="search-and-filter">
             <div class="filter-buttons">
+                <button type="button" class="btn" data-all onclick="renderScientists(scientists)">Todos</button>
                 <button type="button" class="btn" data-letter="A" onclick="filterByLetter('A')">A</button>
                 <button type="button" class="btn" data-letter="B" onclick="filterByLetter('B')">B</button>
                 <button type="button" class="btn" data-letter="C" onclick="filterByLetter('C')">C</button>
@@ -365,6 +583,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <script>
         const scientistListElement = document.getElementById('scientist-list');
@@ -473,21 +693,16 @@
 
         function toggleMode() {
     const body = document.body;
-    const modal = document.getElementById('scientist-modal');
-    const isLightMode = body.classList.contains('light-mode');
-    
-    if (isLightMode) {
+    const toggleContainer = document.querySelector('.toggle-container');
+
+    if (body.classList.contains('light-mode')) {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
-        document.querySelector('.mode-icon').innerText = '🌞'; // Ícone do sol
-        modal.classList.remove('light-mode');
-        modal.classList.add('dark-mode');
+        toggleContainer.classList.add('dark');
     } else {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
-        document.querySelector('.mode-icon').innerText = '🌙'; // Ícone da lua
-        modal.classList.remove('dark-mode');
-        modal.classList.add('light-mode');
+        toggleContainer.classList.remove('dark');
     }
 }
 
