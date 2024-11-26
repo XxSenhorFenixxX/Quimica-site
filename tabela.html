@@ -1828,7 +1828,7 @@ body.dark-mode {
 
 
         <script>
-           function toggleMode() {
+          function toggleMode() {
     const body = document.body;
     const toggleContainer = document.querySelector('.toggle-container');
 
@@ -1836,12 +1836,33 @@ body.dark-mode {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
         toggleContainer.classList.add('dark');
+        localStorage.setItem('theme', 'dark-mode');  // Salva a escolha do tema
     } else {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
         toggleContainer.classList.remove('dark');
+        localStorage.setItem('theme', 'light-mode');  // Salva a escolha do tema
     }
 }
+
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme'); // Recupera o tema salvo
+    const body = document.body;
+    const toggleContainer = document.querySelector('.toggle-container');
+    
+    if (savedTheme === 'dark-mode') {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+        toggleContainer.classList.add('dark');
+    } else {
+        body.classList.add('light-mode');
+        body.classList.remove('dark-mode');
+        toggleContainer.classList.remove('dark');
+    }
+}
+
+// Carrega o tema ao carregar a página
+document.addEventListener('DOMContentLoaded', loadTheme);
 
             // Função para remover acentos e pontuações
             function normalizeString(str) {
