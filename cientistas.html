@@ -508,6 +508,88 @@
     border-color: #ff9800; /* Bordas mais claras no hover */
 }
 
+/* Balão flutuante */
+.floating-balloon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #6cb2e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.floating-balloon:hover {
+    transform: scale(1.1);
+}
+
+/* Ícone dentro do balão */
+.floating-balloon i {
+    font-size: 24px;
+    color: white;
+}
+
+/* Menu de opções */
+.accessibility-options {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.accessibility-options button {
+    font-size: 14px;
+    padding: 10px;
+    border: none;
+    background-color: #6cb2e0;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accessibility-options button:hover {
+    background-color: #4a90e2;
+}
+
+/* Mostra o menu ao clicar */
+.floating-balloon.active .accessibility-options {
+    display: flex;
+}
+
+.high-contrast {
+    background-color: black;
+    color: yellow;
+}
+
+.high-contrast a {
+    color: lightblue;
+}
+
+/* Classe para aumentar a fonte */
+.large-font {
+    font-size: 1.2em !important; /* Aumenta 20% */
+}
+
+/* Classe para diminuir a fonte */
+.small-font {
+    font-size: 0.8em !important; /* Diminui 20% */
+}
+
 
     </style>
 </head>
@@ -524,8 +606,23 @@
             <a href="terminlogias.html">Terminologias</a>
             <a href="cientistas.html">Cientistas</a>
             <a href="tabela.html">Tabela Periodica</a>
+            <a href="Vidrarias.html">Vidrarias</a>
             <input type="text" id="search-box" class="search-box" placeholder="Buscar cientistas...">
         </nav>
+
+        <!-- Balão flutuante de acessibilidade -->
+<div class="floating-balloon">
+    <i class="fas fa-universal-access"></i>
+    <div class="accessibility-options">
+        <button onclick="toggleContrast()">Alto Contraste</button>
+        <button onclick="increaseFont()">Aumentar Fonte</button>
+        <button onclick="decreaseFont()">Diminuir Fonte</button>
+        <button onclick="resetFont()">Resetar Fonte</button>
+        <button onclick="toggleVLibras()">VLibras</button>
+    </div>
+</div>
+
+
         <div class="toggle-container" onclick="toggleMode()">
             <div class="toggle">
                 <div class="circle">
@@ -734,6 +831,45 @@ document.addEventListener('DOMContentLoaded', loadTheme);
 
         // Renderizar todos os cientistas ao carregar a página
         renderScientists(scientists);
+
+        // Alternar o modo de alto contraste
+function toggleContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+// Resetar configurações de fonte e contraste
+function resetFont() {
+    document.body.classList.remove('large-font', 'small-font');
+    document.body.classList.remove('high-contrast');
+}
+
+// Aumentar o tamanho da fonte
+function increaseFont() {
+    document.body.classList.add('large-font');
+    document.body.classList.remove('small-font');
+}
+
+// Diminuir o tamanho da fonte
+function decreaseFont() {
+    document.body.classList.add('small-font');
+    document.body.classList.remove('large-font');
+}
+
+// Ativar ou desativar VLibras
+function toggleVLibras() {
+    if (typeof window.VLibras !== "undefined") {
+        new window.VLibras.Widget('https://vlibras.gov.br/app').init();
+    } else {
+        alert("VLibras não carregado corretamente.");
+    }
+}
+
+// Alternar a visibilidade do menu do balão
+const floatingBalloon = document.querySelector('.floating-balloon');
+floatingBalloon.addEventListener('click', () => {
+    floatingBalloon.classList.toggle('active');
+});
+
     </script>
 
 </body>
